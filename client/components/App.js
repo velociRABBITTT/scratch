@@ -5,6 +5,7 @@ const App = () => {
     <div>
       Hello there from Wes!!!
       sup from George...
+      hello from Dom
       <h1 className="header"> Team wonder pussies for the win</h1>
     </div>
   );
