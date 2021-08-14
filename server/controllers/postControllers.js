@@ -1,7 +1,7 @@
 const models = require("../models/model");
-const userController = {};
+const postController = {};
 
-userController.createUser = (req, res, next) => {
+postController.createPost = (req, res, next) => {
   const newUser = new models.User(req.body);
 
   newUser
@@ -15,5 +15,4 @@ userController.createUser = (req, res, next) => {
     );
 };
 
-userController.verifyUser = (req, res, next) => {};
-module.exports = userController;
+module.exports = postController;

@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const userController = require("./controllers/userControllers");
-
+const postController = require("./controllers/postControllers");
 //* handle parsing request body
 app.use(express.json());
 //this parses url encoded body content from incomming requests ans place it in req.body....
@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
 
 //POST request for create user
 app.post("/new", userController.createUser, (req, res) => {
-  res.json(res.locals.user); //temp message to front end
+  res.json(res.locals.user); //json to front end
 });
 
 //POST request for Login

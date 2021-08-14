@@ -18,9 +18,13 @@ const postSchema = new Schema({
 
 const userSchema = new Schema({
   username: { type: String, required: true, unique: true },
+  email: { type: String, required: true, unique: true},
   password: { type: String, required: true },
 });
 
-module.exports = mongoose.model("User", userSchema);
-
-module.exports = mongoose.model("Post", postSchema);
+const User = mongoose.model("User", userSchema);
+const Post = mongoose.model("Post", postSchema);
+module.exports = {
+  User,
+  Post,
+};
