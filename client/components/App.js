@@ -80,12 +80,13 @@ class App extends Component {
 
     let loginUser = await document.getElementById('lUser').value;
     let loginPass = await document.getElementById('lPass').value;
-    let body = {username: loginUser, password: loginPass};
+    let body = await {username: loginUser, password: loginPass};
+    console.log(body)
 
     await fetch('/login', {
       method: 'POST',
       headers: {'Content-Type': 'Application/JSON'},
-      body: body
+      body: JSON.stringify(body)
     })
     .then(res => res.json())
     .then(user => {
@@ -130,7 +131,7 @@ class App extends Component {
                     </Grid>
                   </Grid>
                   <Grid item xs={12}>
-                    <Button color="primary" fullWidth type="submit" variant="contained" onClick={this.loginUser}>
+                    <Button color="primary" fullWidth variant="contained" onClick={this.loginUser}>
                       Log in
                     </Button>
                     <Button color="default" className='createUser' fullWidth type="submit" variant="contained" onClick={this.createUserClick}>
