@@ -28,7 +28,8 @@ class App extends Component {
       feed: undefined,
     }
     this.createUserClick = this.createUserClick.bind(this);
-    this.actualCreate = this.actualCreate.bind(this)
+    this.actualCreate = this.actualCreate.bind(this);
+    this.loginUser = this.loginUser.bind(this);
   }
 
 
@@ -75,6 +76,28 @@ class App extends Component {
 
   }
 
+  async loginUser() {
+
+    let loginUser = await document.getElementById('lUser').value;
+    let loginPass = await document.getElementById('lPass').value;
+    let body = {username: loginUser, password: loginPass};
+
+    await fetch('/login', {
+      method: 'POST',
+      headers: {'Content-Type': 'Application/JSON'},
+      body: body
+    })
+    .then(res => res.json())
+    .then(user => {
+      console.log(user);
+      if (!user.status){
+        this.setState({ userLoggedIn: true, user: user})
+      }
+    })
+    .catch(err => console.log(err))
+
+  }
+
 
 
   render () {
@@ -91,10 +114,11 @@ class App extends Component {
                   <Grid item xs={12}>
                     <Grid container spacing={2}>
                       <Grid item xs={12}>
-                        <TextField fullWidth label="Email" name="email" size="small" variant="outlined" />
+                        <TextField id='lUser' fullWidth label="Username" name="username" size="small" variant="outlined" />
                       </Grid>
                       <Grid item xs={12}>
                         <TextField
+                          id='lPass'
                           fullWidth
                           label="Password"
                           name="password"
@@ -106,7 +130,7 @@ class App extends Component {
                     </Grid>
                   </Grid>
                   <Grid item xs={12}>
-                    <Button color="primary" fullWidth type="submit" variant="contained">
+                    <Button color="primary" fullWidth type="submit" variant="contained" onClick={this.loginUser}>
                       Log in
                     </Button>
                     <Button color="default" className='createUser' fullWidth type="submit" variant="contained" onClick={this.createUserClick}>
