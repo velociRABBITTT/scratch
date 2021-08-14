@@ -44,7 +44,10 @@ app.post('/createPost',postController.createPost, (req,res)=>{
 app.post('/editPost',postController.editPost, (req,res)=>{
   res.status(200).send('Successfully edited Post')
 })
-
+//DELETE request for Delete Post
+app.post('/deletePost',postController.deletePost, (req,res)=>{
+  res.status(200).send('Successfully deleted Post')
+})
 
 //this catches any requests to an unknown route
 app.use((req, res) => res.sendStatus(404));
