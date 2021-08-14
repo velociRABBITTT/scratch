@@ -8,8 +8,11 @@
     "build": "NODE_ENV=production webpack",
     "dev": "NODE_ENV=development nodemon server/server.js & NODE_ENV=development webpack serve --open"
   },
-  "nodemonConfig":{
-    "ignore":["build","client"]
+  "nodemonConfig": {
+    "ignore": [
+      "build",
+      "client"
+    ]
   },
   "repository": {
     "type": "git",
@@ -18,10 +21,14 @@
   "author": "Wesley, George, Dom",
   "license": "ISC",
   "dependencies": {
+    "@material-ui/core": "^4.12.3",
+    "classnames": "^2.3.1",
     "express": "^4.17.1",
     "mongoose": "^5.13.6",
+    "prop-types": "^15.7.2",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-scripts": "^4.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
