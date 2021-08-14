@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-
+const userController = require("./controllers/userControllers");
 
 // const mongoURI =
 //   "mongodb+srv://admin:admin@jared.uoo20.mongodb.net/scratch?retryWrites=true&w=majority";
@@ -21,6 +21,16 @@ app.use("/build", express.static(path.join(__dirname, "../build")));
 // serve index.html on the route '/'
 app.get("/", (req, res) => {
   return res.status(200).sendFile(path.join(__dirname, "../index.html"));
+});
+
+//POST request for create user
+app.post("/new", userController.createUser, (req, res) => {
+  res.send("User Created"); //temp message to front end
+});
+
+//POST request for Login
+app.post("/new", userController.verifyUser, (req, res) => {
+  res.send("User Created"); //temp message to front end
 });
 
 //this catches any requests to an unknown route
