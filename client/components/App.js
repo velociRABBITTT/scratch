@@ -12,6 +12,7 @@ import {
   } from "@material-ui/core";
   import { StylesProvider, ThemeProvider } from '@material-ui/core/styles';
   import FeedContainer from './../containers/FeedContainer.jsx'
+  import NavBar from './NavBar.js'
 
   const testFunc = async () => {
     console.log('testfunc')
@@ -152,7 +153,7 @@ class App extends Component {
                     <Button color="primary" fullWidth variant="contained" onClick={this.loginUser}>
                       Log in
                     </Button>
-                    <Button color="default" className='createUser' fullWidth type="submit" variant="contained" onClick={this.createUserClick}>
+                    <Button color="default" className='createUser' fullWidth variant="contained" onClick={this.createUserClick}>
                       Create User
                     </Button>
                   </Grid>
@@ -234,7 +235,10 @@ class App extends Component {
 
     if (this.state.userLoggedIn){
       return (
+        <section>
+        <NavBar />
         <FeedContainer AppState={{...this.state}}/>
+        </section>
       )
     }
 
