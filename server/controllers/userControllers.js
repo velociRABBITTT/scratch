@@ -2,7 +2,7 @@ const models = require("../models/model");
 const userController = {};
 
 userController.createUser = (req, res, next) => {
-  console.log("from frontend: ", req.body)
+  // console.log("from frontend: ", req.body)
   const newUser = new models.User(req.body);
 
   newUser
@@ -17,10 +17,10 @@ userController.createUser = (req, res, next) => {
 };
 
 userController.verifyUser = (req, res, next) => {
-  console.log("req.body", req.body)
+  // console.log("req.body", req.body)
   models.User.findOne({username:req.body.username, password:req.body.password})
   .then((result) => {
-    console.log("this result of User.findOne: ", result);
+    // console.log("this result of User.findOne: ", result);
     if (result === null) {
       res.locals.result = "User password Error";
       throw new Error(

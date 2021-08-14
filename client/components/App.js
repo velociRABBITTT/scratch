@@ -114,7 +114,7 @@ class App extends Component {
     fetch('/posts')
       .then(res => res.json())
       .then(arr => {
-        console.log(arr)
+        //console.log(arr)
         this.setState({ feed: arr })
       })
   }
@@ -123,7 +123,7 @@ class App extends Component {
     fetch('/posts')
     .then(res => res.json())
     .then(arr => {
-      console.log(arr)
+      //console.log(arr)
       this.setState({ feed: arr })
     })
   }
@@ -247,7 +247,7 @@ class App extends Component {
       return (
         <section>
         <NavBar AppState={{...this.state}} update={this.updatePosts}/>
-        <FeedContainer AppState={{...this.state}}/>
+        <FeedContainer AppState={{...this.state}} update={this.updatePosts}/>
         </section>
       )
     }

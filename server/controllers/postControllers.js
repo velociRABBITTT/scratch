@@ -31,5 +31,32 @@ postController.getAllPosts= (req,res,next) =>{
   
 }
 
+postController.editPost=(req,res,next)=>{
+  console.log("This req.body :", req.body)
+   models.Post.findOne({author: req.body.author})
+   .then((post)=>{
+     post.title= req.body.title,
+     post.goal= req.body.goal,
+     post.method= req.body.method,
+     post.results= req.body.results
+     post.author= req.body.author
+     post.created =req.body.created
+
+     post.save()
+     .then((post)=res.json(post))
+     .catch((err) => res.status(400).json("Error :" + err));
+   })
+   .catch((err)=>res.status(400).json("error,student not found : " +err));
+}
+
+
+// title: { type: String, required:true},
+// goal: { type: String, required: true },
+// method: { type: String },
+// duration: { type: String },
+// results: { type: String },
+// author: { type: String },
+// created: { type: String }
+
 
 module.exports = postController;
