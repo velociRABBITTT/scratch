@@ -2,9 +2,9 @@ const models = require("../models/model");
 const postController = {};
 
 postController.createPost = (req, res, next) => {
-  const newUser = new models.User(req.body);
+  const newPost = new models.Post(req.body);
 
-  newUser
+  newPost
     .save()
     .then((data) => {
       res.locals.user = data;
@@ -14,5 +14,21 @@ postController.createPost = (req, res, next) => {
       next({ message: `userController.createUser: Error: ${err}` })
     );
 };
+
+
+postController.getAllPosts= (req,res,next) =>{
+  console.log('in postcontoller')
+  models.Post.find({})
+  .then(allPosts=>{
+    console.log('allposts', allPosts)
+    res.locals.allPosts = allPosts;
+    return next()
+  })
+  .catch((err) =>
+    next({ message: `postController.getAllPost: Error: ${err}` })
+  );
+  
+}
+
 
 module.exports = postController;
