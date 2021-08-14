@@ -4,7 +4,7 @@ const path = require("path");
 
 
 // const mongoURI =
-//   "mongodb+srv://wes:sdop@solo-project.jihog.mongodb.net/user_db?retryWrites=true&w=majority";
+//   "mongodb+srv://admin:admin@jared.uoo20.mongodb.net/scratch?retryWrites=true&w=majority";
 
 // mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
 // mongoose.connection.once("open", () => {
