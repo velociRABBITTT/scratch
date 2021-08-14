@@ -15,7 +15,7 @@
     "type": "git",
     "url": "git+https://github.com/"
   },
-  "author": "Wesley Mungal",
+  "author": "Wesley, George, Dom",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
