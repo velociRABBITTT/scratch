@@ -2,6 +2,7 @@ const models = require("../models/model");
 const userController = {};
 
 userController.createUser = (req, res, next) => {
+  console.log("from frontend: ", req.body)
   const newUser = new models.User(req.body);
 
   newUser

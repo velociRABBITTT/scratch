@@ -14,6 +14,8 @@ const postSchema = new Schema({
   method: { type: String },
   duration: { type: String },
   results: { type: String },
+  author: { type: String },
+  created: { type: String }
 });
 
 const userSchema = new Schema({
