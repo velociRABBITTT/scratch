@@ -13,21 +13,68 @@ import {
   import { StylesProvider, ThemeProvider } from '@material-ui/core/styles';
   import FeedContainer from './../containers/FeedContainer.jsx'
 
+  const testFunc = async () => {
+    console.log('testfunc')
+  }
+
 class App extends Component { 
   constructor() {
     super();
     this.state = {
       userLoggedIn: false,
       createUser: false,
+      session: undefined,
       user: undefined,
       feed: undefined,
     }
-    this.createUserClick = this.createUserClick.bind(this)
+    this.createUserClick = this.createUserClick.bind(this);
+    this.actualCreate = this.actualCreate.bind(this)
   }
 
+
+  // On click function for when user clicks on "create user". Changes state to rerender create user box.
   createUserClick(){
     this.setState({createUser: true});
   }
+
+ async actualCreate(){
+
+  let newUser = await document.getElementById('cUser').value;
+  let newEmail = await document.getElementById('cEmail').value;
+  let newPassword = await document.getElementById('cPassword').value;
+  let confirmPassword = await document.getElementById('cPassword2').value;
+
+  if (newPassword != confirmPassword){
+    alert('Passwords must match')
+  }
+  else {
+  const body = await {
+    username: newUser,
+    email: newEmail,
+    password: newPassword,
+  }
+  console.log(body)
+
+  await fetch('/new', {
+    method: 'POST',
+    headers: {'Content-Type': 'Application/JSON'},
+    body: JSON.stringify(body)
+  })
+  .then(res => res.json())
+  .then(user => {
+    console.log(user.status);
+    if(!user.status){
+    this.setState({ userLoggedIn: true, user: user, createUser: false})
+    }
+    else {
+      alert(`there was an error creating a user ${user.message}`)
+    }
+  })
+  .catch(err => console.log(err))
+  }
+
+  }
+
 
 
   render () {
@@ -37,39 +84,39 @@ class App extends Component {
     if (!this.state.userLoggedIn && !this.state.createUser) {
       return (
         <StylesProvider injectFirst>
-        <div id ='login'>
-        <Container maxWidth="xs">
-        <form>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <Grid container spacing={2}>
-                <Grid item xs={12}>
-                  <TextField fullWidth label="Email" name="email" size="small" variant="outlined" />
+          <div id ='login'>
+            <Container maxWidth="xs">
+              <form>
+                <Grid container spacing={3}>
+                  <Grid item xs={12}>
+                    <Grid container spacing={2}>
+                      <Grid item xs={12}>
+                        <TextField fullWidth label="Email" name="email" size="small" variant="outlined" />
+                      </Grid>
+                      <Grid item xs={12}>
+                        <TextField
+                          fullWidth
+                          label="Password"
+                          name="password"
+                          size="small"
+                          type="password"
+                          variant="outlined"
+                        />
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Button color="primary" fullWidth type="submit" variant="contained">
+                      Log in
+                    </Button>
+                    <Button color="default" className='createUser' fullWidth type="submit" variant="contained" onClick={this.createUserClick}>
+                      Create User
+                    </Button>
+                  </Grid>
                 </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    fullWidth
-                    label="Password"
-                    name="password"
-                    size="small"
-                    type="password"
-                    variant="outlined"
-                  />
-                </Grid>
-              </Grid>
-            </Grid>
-            <Grid item xs={12}>
-              <Button color="primary" fullWidth type="submit" variant="contained">
-                Log in
-              </Button>
-              <Button color="default" className='createUser' fullWidth type="submit" variant="contained" onClick={this.createUserClick}>
-                Create User
-              </Button>
-            </Grid>
-          </Grid>
-        </form>
-      </Container>
-      </div>
+              </form>
+          </Container>
+        </div>
       </StylesProvider>
       )
     }
@@ -80,50 +127,52 @@ class App extends Component {
 
       return (
         <StylesProvider injectFirst>
-        <div id ='createUserBox'>
-        <Container maxWidth="xs">
-        <form>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <Grid container spacing={2}>
-                <Grid item xs={12}>
-                  <TextField fullWidth label='Username' name='Username' size='small' variant='outlined' />
+          <div id ='createUserBox'>
+            <Container maxWidth="xs">
+              <form>
+                <Grid container spacing={3}>
+                  <Grid item xs={12}>
+                    <Grid container spacing={2}>
+                      <Grid item xs={12}>
+                        <TextField id='cUser' fullWidth label='Username' name='Username' size='small' variant='outlined' />
+                      </Grid>
+                      <Grid item xs={12}>
+                        <TextField id='cEmail' fullWidth label="Email" name="email" size="small" variant="outlined" />
+                      </Grid>
+                      <Grid item xs={12}>
+                        <TextField
+                          id='cPassword'
+                          fullWidth
+                          label="Password"
+                          name="password"
+                          size="small"
+                          type="password"
+                          variant="outlined"
+                        />
+                      </Grid>
+                      <Grid item xs={12}>
+                        <TextField 
+                        fullWidth
+                        id='cPassword2'
+                        label='Confirm Password'
+                        name='Confirm Password'
+                        size='small'
+                        type='password'
+                        variant='outlined'
+                        
+                        />
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Button color="primary" className='createUser' fullWidth variant="contained" onClick={this.actualCreate}>
+                      Create New User
+                    </Button>
+                  </Grid>
                 </Grid>
-                <Grid item xs={12}>
-                  <TextField fullWidth label="Email" name="email" size="small" variant="outlined" />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    fullWidth
-                    label="Password"
-                    name="password"
-                    size="small"
-                    type="password"
-                    variant="outlined"
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField 
-                  fullWidth
-                  label='Confirm Password'
-                  name='Confirm Password'
-                  size='small'
-                  type='password'
-                  variant='outlined'
-                  
-                  />
-                </Grid>
-              </Grid>
-            </Grid>
-            <Grid item xs={12}>
-              <Button color="primary" className='createUser' fullWidth type="submit" variant="contained">
-                Create New User
-              </Button>
-            </Grid>
-          </Grid>
-        </form>
-      </Container>
-      </div>
+              </form>
+          </Container>
+        </div>
       </StylesProvider>
 
 
