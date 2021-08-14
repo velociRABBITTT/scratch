@@ -24,7 +24,7 @@ body{
 
 #feedContainer {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: center;
   justify-content: center;
   padding: 25px;
@@ -51,7 +51,7 @@ body{
 
 /* trial for nav bar */
 .topnav {
-  margin: 0;
+  margin: 25px;
   overflow: hidden;
   background-color: #517185;
 }
@@ -63,6 +63,10 @@ body{
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+}
+
+#createPost {
+  width: 100%;
 }
 
 .topnav a:hover {

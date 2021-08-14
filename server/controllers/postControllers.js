@@ -7,7 +7,8 @@ postController.createPost = (req, res, next) => {
   newPost
     .save()
     .then((data) => {
-      res.locals.user = data;
+      res.locals.post = data;
+      console.log(data)
       return next();
     })
     .catch((err) =>
