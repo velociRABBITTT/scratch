@@ -17,27 +17,51 @@ import {
       super(props);
       this.state = {
         editForm: false,
+        targetId: undefined
       }
-      this.editPost = this.editPost.bind(this)
-      this.changeToEdit = this.changeToEdit.bind(this)
+      this.editPost = this.editPost.bind(this);
+      this.changeToEdit = this.changeToEdit.bind(this);
     }
 
     async editPost(e) {
+      
       console.log(e.target.value)
-      fetch('/editPosts', {
+      const newTitle = await document.getElementById('eTitle').value;
+      const newGoal = await document.getElementById('eGoal').value;
+      const newMethod = await document.getElementById('eMethod').value;
+      const newDuration = await document.getElementById('eDuration').value;
+      const newResults = await document.getElementById('eResults').value;
+      const newAuthor = this.props.appState.user.username;
+      let newDate = new Date();
+      newDate = newDate.toTimeString()
+      const body = await {
+        id: this.state.targetId,
+        title: newTitle,
+        goal: newGoal,
+        method: newMethod,
+        duration: newDuration,
+        results: newResults,
+        author: newAuthor,
+        created: newDate
+      }
+
+      fetch('/editPost', {
         method: 'POST',
         headers: {'Content-Type':'Application/JSON'},
-        body: JSON.stringify(e.target.value)
+        body: JSON.stringify(body)
       })
       .then(res => res.json())
       .then(arr => {
       //console.log(arr)
-      this.setState({ feed: arr })
+      this.setState({editForm: false, targetId: undefined})
+      this.props.update();
+
     })
     }
 
-    changeToEdit() {
-      this.setState({ editForm: true })
+    changeToEdit(e) {
+      const targetId = e.target.value;
+      this.setState({ editForm: true, targetId: targetId })
     }
 
     render () {
@@ -49,14 +73,14 @@ import {
                   <Grid item xs={12}>
                     <Grid container spacing={2}>
                       <Grid item xs={12}>
-                        <TextField id='eTitle' fullWidth label='Title' name='Title' size='small' variant='outlined' value={this.props.postProps.title} /> 
+                        <TextField id='eTitle' fullWidth label='Title' name='Title' size='small' variant='outlined' defaultValue= {this.props.postProps.title} /> 
                       </Grid>
                       <Grid item xs={12}>
-                        <TextField id='eGoal' fullWidth label="Goal" name="Goal" size="small" variant="outlined" value= {this.props.postProps.goal}/>
+                        <TextField id='eGoal' fullWidth label="Goal" name="Goal" size="small" variant="outlined" defaultValue= {this.props.postProps.goal}/>
                       </Grid>
                       <Grid item xs={12}>
                         <TextField
-                          value={this.props.postProps.method}
+                          defaultValue={this.props.postProps.method}
                           id='eMethod'
                           fullWidth
                           label="Method"
@@ -67,7 +91,7 @@ import {
                       </Grid>
                       <Grid item xs={12}>
                         <TextField 
-                        value={this.props.postProps.duration}
+                        defaultValue={this.props.postProps.duration}
                         fullWidth
                         id='eDuration'
                         label='Duration'
@@ -79,7 +103,7 @@ import {
                       </Grid>
                       <Grid item xs={12}>
                         <TextField
-                          value={this.props.postProps.results}
+                          defaultValue={this.props.postProps.results}
                           id='eResults'
                           fullWidth
                           label="Results"
@@ -90,7 +114,7 @@ import {
                     </Grid>
                   </Grid>
                   <Grid item xs={12}>
-                    <Button color="primary" className='submitPost' fullWidth variant="contained" >
+                    <Button color="primary" className='submitPost' fullWidth variant="contained" onClick={this.editPost}>
                       Edit Post
                     </Button>
                   </Grid>

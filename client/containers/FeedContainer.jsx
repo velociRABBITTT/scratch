@@ -32,7 +32,7 @@ import {
           appState={this.props.AppState}
           key={ind}
           postProps={el} 
-          update={this.props.updatePosts}
+          update={this.props.update}
           />)
       })
 

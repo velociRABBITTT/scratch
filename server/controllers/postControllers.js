@@ -21,7 +21,7 @@ postController.getAllPosts= (req,res,next) =>{
   console.log('in postcontoller')
   models.Post.find({})
   .then(allPosts=>{
-    console.log('allposts', allPosts)
+    // console.log('allposts', allPosts)
     res.locals.allPosts = allPosts;
     return next()
   })
@@ -33,13 +33,13 @@ postController.getAllPosts= (req,res,next) =>{
 
 postController.editPost=(req,res,next)=>{
   console.log("This req.body :", req.body)
-   models.Post.findOne({author: req.body.author})
+   models.Post.findOne({_id: req.body.id})
    .then((post)=>{
      post.title= req.body.title,
      post.goal= req.body.goal,
      post.method= req.body.method,
+     post.duration= req.body.duration,
      post.results= req.body.results
-     post.author= req.body.author
      post.created =req.body.created
 
      post.save()
@@ -48,6 +48,13 @@ postController.editPost=(req,res,next)=>{
    })
    .catch((err)=>res.status(400).json("error,student not found : " +err));
 }
+postController.deletePost=(req,res,next)=>{
+  const title = req.body.title
+  //Post.findOneAndDelete({title:})
+}
+
+
+
 
 
 // title: { type: String, required:true},

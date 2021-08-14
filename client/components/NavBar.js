@@ -16,7 +16,7 @@ import {
     constructor(props){
       super(props);
       this.state = {
-        createPost: false,
+        createPost: false
       };
 
       this.createPostOnClick = this.createPostOnClick.bind(this);
@@ -24,7 +24,8 @@ import {
 
     }
 
-    createPostOnClick() {
+    
+    createPostOnClick(e) {
       this.setState({ createPost: true })
     }
 
@@ -46,6 +47,7 @@ import {
         author: newAuthor,
         created: newDate
       }
+
 
       await fetch('/createPost', {
         method: 'POST',
