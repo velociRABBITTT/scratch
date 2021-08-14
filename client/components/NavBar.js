@@ -67,8 +67,8 @@ import {
 
       if (!this.state.createPost){
       return(
-        <div class="topnav">
-        <a class="active" href="#home">Home</a>
+        <div className="topnav">
+        <a className="active" href="#home">Home</a>
         {/* <input id='createPost' type="text" placeholder="create post"></input> */}
         <Button color="default" className='createPost' fullWidth variant="contained" size='small' onClick={this.createPostOnClick}>Create Post</Button>
       </div>
@@ -77,8 +77,8 @@ import {
 
     if (this.state.createPost){
       return (
-        <div class="topnav">
-        <a class="active" href="#home">Home</a>
+        <div className="topnav">
+        <a className="active" href="#home">Home</a>
         {/* <input id='createPost' type="text" placeholder="create post"></input> */}
         <form>
           <Grid container spacing={3}>

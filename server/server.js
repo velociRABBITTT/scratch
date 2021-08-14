@@ -39,6 +39,13 @@ app.post('/createPost',postController.createPost, (req,res)=>{
   res.status(200).send('Successfully Created Post')
 })
 
+
+//POST request for edit post
+app.post('/editPost',postController.editPost, (req,res)=>{
+  res.status(200).send('Successfully edited Post')
+})
+
+
 //this catches any requests to an unknown route
 app.use((req, res) => res.sendStatus(404));
 

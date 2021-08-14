@@ -29,8 +29,10 @@ import {
 
       this.props.AppState.feed.forEach((el,ind) => {
         feedArr.push(<Post 
+          appState={this.props.AppState}
           key={ind}
           postProps={el} 
+          update={this.props.updatePosts}
           />)
       })
 
