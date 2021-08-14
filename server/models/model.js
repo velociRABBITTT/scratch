@@ -10,6 +10,7 @@ mongoose.connection.once("open", () => {
 const Schema = mongoose.Schema;
 
 const postSchema = new Schema({
+  title: { type: String, required:true},
   goal: { type: String, required: true },
   method: { type: String },
   duration: { type: String },

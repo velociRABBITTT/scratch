@@ -38,6 +38,8 @@ class App extends Component {
     this.setState({createUser: true});
   }
 
+  // function to create user in database 
+
  async actualCreate(){
 
   let newUser = await document.getElementById('cUser').value;
@@ -74,6 +76,9 @@ class App extends Component {
   .catch(err => console.log(err))
   }
 
+
+  //function to login user to site 
+
   }
 
   async loginUser() {
@@ -99,6 +104,8 @@ class App extends Component {
 
   }
 
+
+  // Get all posts on mount 
 
   componentDidMount() {
 
@@ -224,6 +231,7 @@ class App extends Component {
 
 
     // If user is logged in - we will render the feedContainer
+
     if (this.state.userLoggedIn){
       return (
         <FeedContainer AppState={{...this.state}}/>

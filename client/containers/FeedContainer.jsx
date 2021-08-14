@@ -22,13 +22,26 @@ import {
 
 
     render (){
+
+      console.log(this.props.AppState.feed)
+
+      const feedArr = [];
+
+      this.props.AppState.feed.forEach((el,ind) => {
+        feedArr.push(<Post 
+          key={ind}
+          postProps={el} 
+          />)
+      })
+
+
       return(
       // <div id='feedContainer'>
       //   <Post />
       // </div>
-      <Container>
-        <Post />
-      </Container>
+      <div id='feedContainer'>
+        {feedArr}
+      </div>
       )
     }
   }

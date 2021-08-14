@@ -32,6 +32,13 @@
 }
 
 .post {
+  max-width: 80%;
+  min-width: 80%;
+  margin: 10px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   border-style: solid;
   border-color: black;
   padding: 5px;
