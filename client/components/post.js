@@ -21,6 +21,7 @@ import {
       }
       this.editPost = this.editPost.bind(this);
       this.changeToEdit = this.changeToEdit.bind(this);
+      this.deletePost = this.deletePost.bind(this);
     }
 
     async editPost(e) {
@@ -62,6 +63,20 @@ import {
     changeToEdit(e) {
       const targetId = e.target.value;
       this.setState({ editForm: true, targetId: targetId })
+    }
+
+    deletePost(e) {
+      const targetId = {id: e.target.value};
+      fetch('/deletePost', {
+        method: 'POST',
+        headers: {'Content-Type':'Application/JSON'},
+        body: JSON.stringify(targetId)
+      })
+      .then(res => res.json())
+      .then(arr => {
+      //console.log(arr)
+      this.props.update();
+    })
     }
 
     render () {
@@ -147,7 +162,7 @@ import {
           <p>Results: {' ' + this.props.postProps.results}</p>
           <p>Author: {' ' + this.props.postProps.author}</p>
           <p>Date Posted: {' ' + this.props.postProps.created}</p>
-          <span><button value={this.props.postProps._id} onClick={this.changeToEdit} >Edit Post</button><button value={this.props.postProps._id}>Delete Post</button></span>
+          <span><button value={this.props.postProps._id} onClick={this.changeToEdit} >Edit Post</button><button value={this.props.postProps._id} onClick={this.deletePost}>Delete Post</button></span>
           
         </div>
         )

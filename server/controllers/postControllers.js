@@ -49,8 +49,12 @@ postController.editPost=(req,res,next)=>{
    .catch((err)=>res.status(400).json("error,student not found : " +err));
 }
 postController.deletePost=(req,res,next)=>{
-  const title = req.body.title
-  //Post.findOneAndDelete({title:})
+
+  models.Post.findOneAndDelete({_id: req.body.id})
+  .then(()=>{ 
+res.json("POST DELETED FOREVER!");
+  })
+  .catch((err)=>res.status(400).json("Error, Post not found: " + err));
 }
 
 
