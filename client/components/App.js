@@ -100,6 +100,17 @@ class App extends Component {
   }
 
 
+  componentDidMount() {
+
+    fetch('/posts')
+      .then(res => res.json())
+      .then(arr => {
+        console.log(arr)
+        this.setState({ feed: arr })
+      })
+  }
+
+
 
   render () {
 
