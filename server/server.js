@@ -25,12 +25,19 @@ app.post("/login", userController.verifyUser, (req, res) => {
   res.json(res.locals.result); //temp message to front end
 });
 
+//
+// Post section
+//
+
 //GET request for user feed
 app.get("/posts", postController.getAllPosts,(req,res)=>{
   res.json(res.locals.allPosts)
 })
 
-
+//POST request for new Post
+app.post('/createPost',postController.createPost, (req,res)=>{
+  res.status(200).send('Successfully Created Post')
+})
 
 //this catches any requests to an unknown route
 app.use((req, res) => res.sendStatus(404));

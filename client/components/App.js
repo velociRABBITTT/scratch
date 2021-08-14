@@ -31,6 +31,7 @@ class App extends Component {
     this.createUserClick = this.createUserClick.bind(this);
     this.actualCreate = this.actualCreate.bind(this);
     this.loginUser = this.loginUser.bind(this);
+    this.updatePosts = this.updatePosts.bind(this);
   }
 
 
@@ -116,6 +117,15 @@ class App extends Component {
         console.log(arr)
         this.setState({ feed: arr })
       })
+  }
+
+  updatePosts() {
+    fetch('/posts')
+    .then(res => res.json())
+    .then(arr => {
+      console.log(arr)
+      this.setState({ feed: arr })
+    })
   }
 
 
@@ -236,7 +246,7 @@ class App extends Component {
     if (this.state.userLoggedIn){
       return (
         <section>
-        <NavBar />
+        <NavBar AppState={{...this.state}} update={this.updatePosts}/>
         <FeedContainer AppState={{...this.state}}/>
         </section>
       )
