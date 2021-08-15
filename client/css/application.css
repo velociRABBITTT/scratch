@@ -5,7 +5,7 @@
  
 }
 body{
-  background-color: #7ea1b6;
+  background-color: #ebf7ff;
 }
 #login {
   position: center;
@@ -51,9 +51,9 @@ body{
 
 /* trial for nav bar */
 .topnav {
-  margin: 25px;
   overflow: hidden;
   background-color: #517185;
+  margin-bottom: 25px;
 }
 
 .topnav a {
@@ -82,8 +82,23 @@ body{
 button{
   background-color: black;
 }
+button:hover{
+  background-color: none;
+}
 
+.MuiContainer-root {
+  background: white;
+  padding: 40px;
+  border-radius: 10px;
+  margin: auto;
+  margin-bottom: 15px;
+}
 
+.postText{
+  border: 2px white solid;
+  border-radius: 10px;
+  padding: 10px;
+}
 /* hexcodes:  
 
 dom's grey #a2a2a3;

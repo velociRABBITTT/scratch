@@ -10,14 +10,29 @@ import {
   Toolbar,
   Link,
   } from "@material-ui/core";
-  import { StylesProvider } from '@material-ui/core/styles';
+  import { StylesProvider, makeStyles, styled } from '@material-ui/core/styles';
+import { grey } from "@material-ui/core/colors";
+
+
+  const PostContainer = styled(Container)({
+    background: 'black',
+    color: 'white'
+
+  })
+
+  const PostTextField = styled(TextField)({
+    color: 'white',
+
+  })
+
 
   class Post extends Component {
     constructor(props) {
       super(props);
       this.state = {
         editForm: false,
-        targetId: undefined
+        targetId: undefined,
+        id: this.props.postProps._id
       }
       this.editPost = this.editPost.bind(this);
       this.changeToEdit = this.changeToEdit.bind(this);
@@ -36,7 +51,7 @@ import {
       let newDate = new Date();
       newDate = newDate.toTimeString()
       const body = await {
-        id: this.state.targetId,
+        id: this.state.id,
         title: newTitle,
         goal: newGoal,
         method: newMethod,
@@ -61,12 +76,12 @@ import {
     }
 
     changeToEdit(e) {
-      const targetId = e.target.value;
-      this.setState({ editForm: true, targetId: targetId })
+      // const targetId = e.target.value;
+      this.setState({ editForm: true})
     }
 
     deletePost(e) {
-      const targetId = {id: e.target.value};
+      const targetId = {id: this.state.id};
       fetch('/deletePost', {
         method: 'POST',
         headers: {'Content-Type':'Application/JSON'},
@@ -83,7 +98,7 @@ import {
 
       
       const editForm = (
-        <form>
+        <Container maxWidth='xs'>
           <Grid container spacing={3}>
                   <Grid item xs={12}>
                     <Grid container spacing={2}>
@@ -135,36 +150,57 @@ import {
                   </Grid>
                 </Grid>
              </Grid>
-        </form>
+             </Container>
       )
       
 
       
 
       const nonAuthoredPost = (     
-      <div className='post'>
-        <p><b>{this.props.postProps.title}</b></p>
-        <p><b>Goal: </b> {' ' + this.props.postProps.goal}</p>
-        <p>Method: {' ' + this.props.postProps.method}</p>
-        <p>Duration: {' ' + this.props.postProps.duration}</p>
-        <p>Results: {' ' + this.props.postProps.results}</p>
-        <p>Author: {' ' + this.props.postProps.author}</p>
-        <p>Date Posted: {' ' + this.props.postProps.created}</p>
-      </div>
+      // <div className='post'>
+      //   <p><b>{this.props.postProps.title}</b></p>
+      //   <p><b>Goal: </b> {' ' + this.props.postProps.goal}</p>
+      //   <p>Method: {' ' + this.props.postProps.method}</p>
+      //   <p>Duration: {' ' + this.props.postProps.duration}</p>
+      //   <p>Results: {' ' + this.props.postProps.results}</p>
+      //   <p>Author: {' ' + this.props.postProps.author}</p>
+      //   <p>Date Posted: {' ' + this.props.postProps.created}</p>
+      // </div>
+      <PostContainer maxWidth='md' >
+         <h1><b>{this.props.postProps.title}</b></h1>
+         <h3><b>Goal: </b></h3>
+         <p className='postText'> {' ' + this.props.postProps.goal}</p>
+         <h3><b>Method:</b></h3>
+         <p className='postText'> {' ' + this.props.postProps.method}</p>
+         <h3><b>Duration: </b></h3>
+         <p className='postText'> {' ' + this.props.postProps.duration}</p>
+         <h3><b>Results: </b></h3>
+         <p className='postText'> {' ' + this.props.postProps.results}</p>
+         <h3>Author: {' ' + this.props.postProps.author}</h3>
+         {/* <p></p> */}
+         <h3>Date Posted:{' ' + this.props.postProps.created}</h3>
+        {/* <p> </p> */}
+      </PostContainer>
       )
 
       const authoredPost = (     
-        <div className='post'>
-          <p><b>{this.props.postProps.title}</b></p>
-          <p><b>Goal: </b> {' ' + this.props.postProps.goal}</p>
-          <p>Method: {' ' + this.props.postProps.method}</p>
-          <p>Duration: {' ' + this.props.postProps.duration}</p>
-          <p>Results: {' ' + this.props.postProps.results}</p>
-          <p>Author: {' ' + this.props.postProps.author}</p>
-          <p>Date Posted: {' ' + this.props.postProps.created}</p>
-          <span><button value={this.props.postProps._id} onClick={this.changeToEdit} >Edit Post</button><button value={this.props.postProps._id} onClick={this.deletePost}>Delete Post</button></span>
-          
-        </div>
+      
+        <PostContainer maxWidth='md' >
+        <h1><b>{this.props.postProps.title}</b></h1>
+        <h3><b>Goal: </b></h3>
+        <p className='postText'> {' ' + this.props.postProps.goal}</p>
+        <h3><b>Method:</b></h3>
+        <p className='postText'> {' ' + this.props.postProps.method}</p>
+        <h3><b>Duration: </b></h3>
+        <p className='postText'> {' ' + this.props.postProps.duration}</p>
+        <h3><b>Results: </b></h3>
+        <p className='postText'> {' ' + this.props.postProps.results}</p>
+        <h3>Author: {' ' + this.props.postProps.author}</h3>
+        {/* <p></p> */}
+        <h3>Date Posted:{' ' + this.props.postProps.created}</h3>
+       {/* <p> </p> */}
+       <span><Button onClick={this.changeToEdit} color='primary' variant="contained" >Edit Post</Button><Button onClick={this.deletePost} color='secondary' variant="contained">Delete Post</Button></span>
+        </PostContainer>
         )
 
 

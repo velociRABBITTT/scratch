@@ -41,9 +41,9 @@ import {
       // <div id='feedContainer'>
       //   <Post />
       // </div>
-      <div id='feedContainer'>
+      <Container maxWidth='md'> 
         {feedArr}
-      </div>
+        </Container>
       )
     }
   }
