@@ -2,6 +2,7 @@
   /* background-color: aqua; */
   box-sizing: border-box;
   color: white;
+  font-family: 'Oswald', sans-serif;
  
 }
 body{
@@ -91,6 +92,7 @@ body{
 #logo {
   border-radius: 5px;
   margin-top: 2px ;
+  margin-left: 5px;
   margin-bottom: 2px ;
 }
 
@@ -118,7 +120,7 @@ button:hover{
 .MuiContainer-root {
   border: 4px  black solid;
   background: rgb(255, 255, 255);
-  padding: 40px;
+  padding: 25px;
   border-radius: 10px;
   margin: auto;
   margin-bottom: 15px;
@@ -130,17 +132,18 @@ button:hover{
 
 
 .MuiButtonBase-root {
-  background-color: #D2A853;
+  background-color: rgb(233, 124, 61);
   font-size: 15px;
   font-weight: 700;
 }
 
 .postText{
-  border: 2px  black solid;
+  border: 2px  gray solid;
   border-radius: 10px;
   padding: 10px;
-  color: black;
+  color: rgb(15, 15, 15);
   word-wrap: break-word;
+  background:rgb(241, 241, 241)
 }
 
 
@@ -150,18 +153,30 @@ button:hover{
 }
 
 h3{
-  color: black;
+  color: rgb(15, 15, 15);
 }
 b{
-  color:black;
+  color:rgb(15, 15, 15);
+  font-size: 26px;
+  /* text-shadow: 2px 2px 2px rgba(99, 144, 241, 0.616); */
 }
 
 .postHeader {
   word-wrap: break-word;
-  color: black;
+  color: rgb(15, 15, 15);
   font-size: 30px;
-
+  /* font-style: italic; */
+  /* text-decoration: underline; */
+  /* text-align: center; */
+   
 }
+
+/* .postHeader:hover {
+
+  color: rgb(43, 100, 224); 
+
+} */
+
 
 .sticky {
   position: fixed; /* Set the navbar to fixed position */
