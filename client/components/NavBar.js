@@ -10,7 +10,14 @@ import {
   Toolbar,
   Link,
   } from "@material-ui/core";
-  import { StylesProvider } from '@material-ui/core/styles';
+  import { borders } from '@material-ui/system';
+  import { StylesProvider, styled } from '@material-ui/core/styles';
+
+  const SubmitContainer = styled(Container)({
+   
+    
+
+  })
 
   class NavBar extends Component {
     constructor(props){
@@ -72,14 +79,17 @@ import {
       if (!this.state.createPost){
       return(
         <section className='sticky'>
-        <div className="topnav">
-        <img src="https://cdn.discordapp.com/attachments/876099998331322402/876689102135763015/act3.png"></img>
-        {/* <a className="active" href="#">Actualize</a> */}
-        <center><h1 id='welcome'>Welcome {this.props.AppState.user.username}</h1></center>
-        {/* <input id='createPost' type="text" placeholder="create post"></input> */}
-        <Button color="primary" className='createPost' fullWidth variant="contained" size='small' onClick={this.createPostOnClick}>Create Post</Button>
-      </div>
-      </section>
+          <div className="topnav">
+            <div className="logoWelcome">
+              <img id="logo" src="https://cdn.discordapp.com/attachments/876099998331322402/876689102135763015/act3.png"></img>
+              {/* <a className="active" href="#">Actualize</a> */}
+              <center><h1 id='welcome'>Welcome {this.props.AppState.user.username}</h1></center>
+              {/* <input id='createPost' type="text" placeholder="create post"></input> */}
+            </div>
+          
+          <Button color="primary" id='createPost' className='createPost' fullWidth variant="contained" size='small' onClick={this.createPostOnClick}>Create Post</Button>
+          </div>
+        </section>
       )
     }
 //CONDITIONAL 2: Once create Post is clicked, we render the edit post
@@ -87,11 +97,14 @@ import {
       return (
         <section className='sticky'>
           <div className="topnav">
-          {/* <a className="active" href="/">Actualize</a> */}
-          <center><h1 id='welcome'>Welcome {this.props.AppState.user.username}</h1></center>
-          {/* <input id='createPost' type="text" placeholder="create post"></input> */}
+          <div className="logoWelcome">
+              <img id="logo" src="https://cdn.discordapp.com/attachments/876099998331322402/876689102135763015/act3.png"></img>
+              {/* <a className="active" href="#">Actualize</a> */}
+              <center><h1 id='welcome'>Welcome {this.props.AppState.user.username}</h1></center>
+              {/* <input id='createPost' type="text" placeholder="create post"></input> */}
+            </div>
           </div>
-          <Container maxWidth='md'>
+          <SubmitContainer maxWidth='md'>
             <Grid container spacing={3}>
                     <Grid item xs={12}>
                       <Grid container spacing={2}>
@@ -136,17 +149,18 @@ import {
                       </Grid>
                     </Grid>
                     <Grid item xs={12}>
-                      {/* SUBMIT BUTTON */}
-                      <Button color="primary" className='submitPost' fullWidth variant="contained" onClick={this.submitNewPost}>
+                      {/* SUBMIT POST BUTTON */}
+                      <Button id='submitPost' color="primary" className='submitPost' fullWidth variant="contained" onClick={this.submitNewPost}>
                         Submit New Post
                       </Button>
-                      <Button color="default" className='submitPost' fullWidth variant="contained" onClick={this.cancelCreateOnClick}>
+                      {/* CANCEL CREATE POST BUTTON */}
+                      <Button id='cancelPost' color="secondary" className='submitPost' fullWidth variant="contained" border={2} onClick={this.cancelCreateOnClick}>
                         Cancel
                       </Button>
                     </Grid>
                   </Grid>
               </Grid>
-          </Container>
+          </SubmitContainer>
         
       </section>
       

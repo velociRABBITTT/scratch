@@ -15,8 +15,8 @@ import { grey } from "@material-ui/core/colors";
 
 
   const PostContainer = styled(Container)({
-    background: 'rgb(245, 245, 245)',
-    color: 'black'
+    //background: 'rgb(245, 245, 245)',
+    //color: 'black'
 
   })
 
