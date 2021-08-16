@@ -5,7 +5,7 @@
  
 }
 body{
-  background-image: url(https://cdn.discordapp.com/attachments/876099998331322400/876584787689738291/AdobeStock_112464962.jpeg);
+  background-image: url(https://hdwallsource.com/img/2014/6/warm-background-39709-40627-hd-wallpapers.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -98,6 +98,8 @@ button:hover{
   border-radius: 10px;
   margin: auto;
   margin-bottom: 15px;
+  border: 2px rgb(204, 108, 45) solid;
+  
 }
 
 .postText{

@@ -10,7 +10,14 @@ import {
   Toolbar,
   Link,
   } from "@material-ui/core";
-  import { StylesProvider } from '@material-ui/core/styles';
+  import { borders } from '@material-ui/system';
+  import { StylesProvider, styled } from '@material-ui/core/styles';
+
+  const SubmitContainer = styled(Container)({
+   
+    
+
+  })
 
   class NavBar extends Component {
     constructor(props){
@@ -88,7 +95,7 @@ import {
           <a className="active" href="/">Actualize</a>
           {/* <input id='createPost' type="text" placeholder="create post"></input> */}
           </div>
-          <Container maxWidth='md'>
+          <SubmitContainer maxWidth='md'>
             <Grid container spacing={3}>
                     <Grid item xs={12}>
                       <Grid container spacing={2}>
@@ -137,13 +144,13 @@ import {
                       <Button color="primary" className='submitPost' fullWidth variant="contained" onClick={this.submitNewPost}>
                         Submit New Post
                       </Button>
-                      <Button color="default" className='submitPost' fullWidth variant="contained" onClick={this.cancelCreateOnClick}>
+                      <Button color="default" className='submitPost' fullWidth variant="contained" border={2} onClick={this.cancelCreateOnClick}>
                         Cancel
                       </Button>
                     </Grid>
                   </Grid>
               </Grid>
-          </Container>
+          </SubmitContainer>
         
       </section>
       
