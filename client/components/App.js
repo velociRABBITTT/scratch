@@ -14,9 +14,6 @@ import {
   import FeedContainer from './../containers/FeedContainer.jsx'
   import NavBar from './NavBar.js'
 
-  const testFunc = async () => {
-    console.log('testfunc')
-  }
 
 class App extends Component { 
   constructor() {
@@ -107,14 +104,14 @@ class App extends Component {
   }
 
 
-  // Get all posts on mount 
+  // Get all posts on mount, makes the request once 
 
   componentDidMount() {
 
     fetch('/posts')
       .then(res => res.json())
       .then(arr => {
-        //console.log(arr)
+        console.log(arr)
         this.setState({ feed: arr })
       })
   }
@@ -132,13 +129,13 @@ class App extends Component {
 
   render () {
 
-    //Checks if user is logged in & checks if create user has not been selected yet - if not Renders only the login screen
+    //CONDITIONAL 1 DEFAULT: Checks if user IS NOT logged in & checks if create user has NOT been selected yet - Renders only the login screen
 
     if (!this.state.userLoggedIn && !this.state.createUser) {
       return (
         <StylesProvider injectFirst>
           <div id ='login'>
-            <Container maxWidth="xs">
+            <Container maxWidth="xs" >
               <form>
                 <Grid container spacing={3}>
                   <Grid item xs={12}>
@@ -173,12 +170,9 @@ class App extends Component {
         </div>
       </StylesProvider>
       )
-    }
-
-    // Check if this.state create user is true - if so we render user login screen
-
+    }//END CONDITIONAL 1: Default, Login screen
+    //CONDITIONAL 2: Create User...Check if this.state create user is true - if so we render user login screen
     if(this.state.createUser){
-
       return (
         <StylesProvider injectFirst>
           <div id ='createUserBox'>
@@ -228,21 +222,9 @@ class App extends Component {
           </Container>
         </div>
       </StylesProvider>
-
-
-
       )
-    }
-
-
-
-
-
-
-
-
-    // If user is logged in - we will render the feedContainer
-
+    }//END OF CONDITIONAL 2: Create User
+    //CONDITION 3:If user is logged in - we will render the feedContainer
     if (this.state.userLoggedIn){
       return (
         <section>
@@ -250,8 +232,7 @@ class App extends Component {
         <FeedContainer AppState={{...this.state}} update={this.updatePosts}/>
         </section>
       )
-    }
-
-  }
-}
+    }//END OF CONDITIONAL 3: if user is logged in
+  }//End of Render ()
+}//END of App Compoent
 export default App;

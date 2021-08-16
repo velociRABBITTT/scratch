@@ -27,7 +27,7 @@ import {
 
       const feedArr = [];
 
-      this.props.AppState.feed.forEach((el,ind) => {
+      this.props.AppState.feed.reverse().forEach((el,ind) => {
         feedArr.push(<Post 
           appState={this.props.AppState}
           key={ind}
@@ -41,9 +41,9 @@ import {
       // <div id='feedContainer'>
       //   <Post />
       // </div>
-      <div id='feedContainer'>
+      <Container maxWidth='md'> 
         {feedArr}
-      </div>
+        </Container>
       )
     }
   }

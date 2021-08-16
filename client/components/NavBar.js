@@ -21,14 +21,16 @@ import {
 
       this.createPostOnClick = this.createPostOnClick.bind(this);
       this.submitNewPost = this.submitNewPost.bind(this);
-
+      this.cancelCreateOnClick = this.cancelCreateOnClick.bind(this);
     }
 
     
     createPostOnClick(e) {
       this.setState({ createPost: true })
     }
-
+    cancelCreateOnClick(e) {
+      this.setState({ createPost: false });
+    }
     async submitNewPost() {
       const newTitle = await document.getElementById('pTitle').value;
       const newGoal = await document.getElementById('pGoal').value;
@@ -49,7 +51,7 @@ import {
       }
 
 
-      await fetch('/createPost', {
+      await fetch('/posts', {
         method: 'POST',
         headers: {'Content-Type': 'Application/JSON'},
         body: JSON.stringify(body)
@@ -66,11 +68,11 @@ import {
 
 
     render(){
-
+//CONDITIONAL
       if (!this.state.createPost){
       return(
         <div className="topnav">
-        <a className="active" href="#home">Home</a>
+        <a className="active" href="#">Actualize</a><span>Welcome: {this.props.AppState.user.username}</span>
         {/* <input id='createPost' type="text" placeholder="create post"></input> */}
         <Button color="default" className='createPost' fullWidth variant="contained" size='small' onClick={this.createPostOnClick}>Create Post</Button>
       </div>
@@ -79,60 +81,66 @@ import {
 
     if (this.state.createPost){
       return (
-        <div className="topnav">
-        <a className="active" href="#home">Home</a>
-        {/* <input id='createPost' type="text" placeholder="create post"></input> */}
-        <form>
-          <Grid container spacing={3}>
-                  <Grid item xs={12}>
-                    <Grid container spacing={2}>
-                      <Grid item xs={12}>
-                        <TextField id='pTitle' fullWidth label='Title' name='Title' size='small' variant='outlined' />
-                      </Grid>
-                      <Grid item xs={12}>
-                        <TextField id='pGoal' fullWidth label="Goal" name="Goal" size="small" variant="outlined" />
-                      </Grid>
-                      <Grid item xs={12}>
-                        <TextField
-                          id='pMethod'
+        <section>
+          <div className="topnav">
+          <a className="active" href="#">Actualize</a>
+          {/* <input id='createPost' type="text" placeholder="create post"></input> */}
+          </div>
+          <Container maxWidth='md'>
+            <Grid container spacing={3}>
+                    <Grid item xs={12}>
+                      <Grid container spacing={2}>
+                        <Grid item xs={12}>
+                          <TextField id='pTitle' fullWidth label='Title' name='Title' size='small' variant='outlined' />
+                        </Grid>
+                        <Grid item xs={12}>
+                          <TextField id='pGoal' fullWidth label="Goal" name="Goal" size="small" variant="outlined" />
+                        </Grid>
+                        <Grid item xs={12}>
+                          <TextField
+                            id='pMethod'
+                            fullWidth
+                            label="Method"
+                            name="Method"
+                            size="small"
+                            variant="outlined"
+                          />
+                        </Grid>
+                        <Grid item xs={12}>
+                          <TextField 
                           fullWidth
-                          label="Method"
-                          name="Method"
-                          size="small"
-                          variant="outlined"
-                        />
+                          id='pDuration'
+                          label='Duration'
+                          name='Duration'
+                          size='small'
+                          variant='outlined'
+                          
+                          />
+                        </Grid>
+                        <Grid item xs={12}>
+                          <TextField
+                            id='pResults'
+                            fullWidth
+                            label="Results"
+                            name="Results"
+                            size="small"
+                            variant="outlined"
+                          />
                       </Grid>
-                      <Grid item xs={12}>
-                        <TextField 
-                        fullWidth
-                        id='pDuration'
-                        label='Duration'
-                        name='Duration'
-                        size='small'
-                        variant='outlined'
-                        
-                        />
-                      </Grid>
-                      <Grid item xs={12}>
-                        <TextField
-                          id='pResults'
-                          fullWidth
-                          label="Results"
-                          name="Results"
-                          size="small"
-                          variant="outlined"
-                        />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <Button color="primary" className='submitPost' fullWidth variant="contained" onClick={this.submitNewPost}>
+                        Submit New Post
+                      </Button>
+                      <Button color="default" className='submitPost' fullWidth variant="contained" onClick={this.cancelCreateOnClick}>
+                        Cancel
+                      </Button>
                     </Grid>
                   </Grid>
-                  <Grid item xs={12}>
-                    <Button color="primary" className='submitPost' fullWidth variant="contained" onClick={this.submitNewPost}>
-                      Submit New Post
-                    </Button>
-                  </Grid>
-                </Grid>
-             </Grid>
-        </form>
-      </div>
+              </Grid>
+          </Container>
+        
+      </section>
       
       ) 
     }
