@@ -14,9 +14,6 @@ import {
   import FeedContainer from './../containers/FeedContainer.jsx'
   import NavBar from './NavBar.js'
 
-  const testFunc = async () => {
-    console.log('testfunc')
-  }
 
 class App extends Component { 
   constructor() {

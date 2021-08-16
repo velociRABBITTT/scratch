@@ -21,14 +21,16 @@ import {
 
       this.createPostOnClick = this.createPostOnClick.bind(this);
       this.submitNewPost = this.submitNewPost.bind(this);
-
+      this.cancelCreateOnClick = this.cancelCreateOnClick.bind(this);
     }
 
     
     createPostOnClick(e) {
       this.setState({ createPost: true })
     }
-
+    cancelCreateOnClick(e) {
+      this.setState({ createPost: false });
+    }
     async submitNewPost() {
       const newTitle = await document.getElementById('pTitle').value;
       const newGoal = await document.getElementById('pGoal').value;
@@ -49,7 +51,7 @@ import {
       }
 
 
-      await fetch('/createPost', {
+      await fetch('/posts', {
         method: 'POST',
         headers: {'Content-Type': 'Application/JSON'},
         body: JSON.stringify(body)
@@ -70,7 +72,7 @@ import {
       if (!this.state.createPost){
       return(
         <div className="topnav">
-        <a className="active" href="#">Actualize</a>
+        <a className="active" href="#">Actualize</a><span>Welcome: {this.props.AppState.user.username}</span>
         {/* <input id='createPost' type="text" placeholder="create post"></input> */}
         <Button color="default" className='createPost' fullWidth variant="contained" size='small' onClick={this.createPostOnClick}>Create Post</Button>
       </div>
@@ -129,6 +131,9 @@ import {
                     <Grid item xs={12}>
                       <Button color="primary" className='submitPost' fullWidth variant="contained" onClick={this.submitNewPost}>
                         Submit New Post
+                      </Button>
+                      <Button color="default" className='submitPost' fullWidth variant="contained" onClick={this.cancelCreateOnClick}>
+                        Cancel
                       </Button>
                     </Grid>
                   </Grid>

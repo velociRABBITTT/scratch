@@ -2,7 +2,8 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const userController = require("./controllers/userControllers");
-const postController = require("./controllers/postControllers");
+
+const postRoutes = require("./routes/postRoutes");
 //* handle parsing request body
 app.use(express.json());
 //this parses url encoded body content from incomming requests ans place it in req.body....
@@ -29,25 +30,10 @@ app.post("/login", userController.verifyUser, (req, res) => {
 // Post section
 //
 
-//GET request for user feed
-app.get("/posts", postController.getAllPosts,(req,res)=>{
-  res.json(res.locals.allPosts)
-})
-
-//POST request for new Post
-app.post('/createPost',postController.createPost, (req,res)=>{
-  res.status(200).send('Successfully Created Post')
-})
+app.use("/posts", postRoutes);
 
 
-//POST request for edit post
-app.post('/editPost',postController.editPost, (req,res)=>{
-  res.status(200).send('Successfully edited Post')
-})
-//DELETE request for Delete Post
-app.post('/deletePost',postController.deletePost, (req,res)=>{
-  res.status(200).send('Successfully deleted Post')
-})
+
 
 //this catches any requests to an unknown route
 app.use((req, res) => res.sendStatus(404));

@@ -15,7 +15,13 @@ import { grey } from "@material-ui/core/colors";
 
 
   const PostContainer = styled(Container)({
-    background: 'black',
+    background: 'rgb(70, 70, 70)',
+    color: 'white'
+
+  })
+
+  const EditContainer = styled(Container)({
+    background: 'rgb(70, 70, 70)',
     color: 'white'
 
   })
@@ -61,8 +67,8 @@ import { grey } from "@material-ui/core/colors";
         created: newDate
       }
 
-      fetch('/editPost', {
-        method: 'POST',
+      fetch('/posts', {
+        method: 'PUT',
         headers: {'Content-Type':'Application/JSON'},
         body: JSON.stringify(body)
       })
@@ -82,8 +88,8 @@ import { grey } from "@material-ui/core/colors";
 
     deletePost(e) {
       const targetId = {id: this.state.id};
-      fetch('/deletePost', {
-        method: 'POST',
+      fetch('/posts', {
+        method: 'DELETE',
         headers: {'Content-Type':'Application/JSON'},
         body: JSON.stringify(targetId)
       })
@@ -98,15 +104,15 @@ import { grey } from "@material-ui/core/colors";
 
       
       const editForm = (
-        <Container maxWidth='xs'>
+        <Container maxWidth='md'>
           <Grid container spacing={3}>
                   <Grid item xs={12}>
                     <Grid container spacing={2}>
                       <Grid item xs={12}>
-                        <TextField id='eTitle' fullWidth label='Title' name='Title' size='small' variant='outlined' defaultValue= {this.props.postProps.title} /> 
+                        <TextField id='eTitle' fullWidth label='Title' name='Title' size='medium' variant='outlined' defaultValue= {this.props.postProps.title} /> 
                       </Grid>
                       <Grid item xs={12}>
-                        <TextField id='eGoal' fullWidth label="Goal" name="Goal" size="small" variant="outlined" defaultValue= {this.props.postProps.goal}/>
+                        <TextField id='eGoal' fullWidth label="Goal" name="Goal" size="medium" variant="outlined" defaultValue= {this.props.postProps.goal}/>
                       </Grid>
                       <Grid item xs={12}>
                         <TextField
@@ -115,7 +121,7 @@ import { grey } from "@material-ui/core/colors";
                           fullWidth
                           label="Method"
                           name="Method"
-                          size="small"
+                          size="medium"
                           variant="outlined"
                         />
                       </Grid>
@@ -126,7 +132,7 @@ import { grey } from "@material-ui/core/colors";
                         id='eDuration'
                         label='Duration'
                         name='Duration'
-                        size='small'
+                        size='medium'
                         variant='outlined'
                         
                         />
@@ -138,8 +144,9 @@ import { grey } from "@material-ui/core/colors";
                           fullWidth
                           label="Results"
                           name="Results"
-                          size="small"
+                          size="medium"
                           variant="outlined"
+                          multiline='true'
                         />
                     </Grid>
                   </Grid>
@@ -167,8 +174,8 @@ import { grey } from "@material-ui/core/colors";
       //   <p>Date Posted: {' ' + this.props.postProps.created}</p>
       // </div>
       <PostContainer maxWidth='md' >
-         <h1><b>{this.props.postProps.title}</b></h1>
-         <h3><b>Goal: </b></h3>
+         <h1 className='postHeader'><b>{this.props.postProps.title}</b></h1>
+         <h3 ><b>Goal: </b></h3>
          <p className='postText'> {' ' + this.props.postProps.goal}</p>
          <h3><b>Method:</b></h3>
          <p className='postText'> {' ' + this.props.postProps.method}</p>
@@ -186,7 +193,7 @@ import { grey } from "@material-ui/core/colors";
       const authoredPost = (     
       
         <PostContainer maxWidth='md' >
-        <h1><b>{this.props.postProps.title}</b></h1>
+        <h1 className='postHeader'><b>{this.props.postProps.title}</b></h1>
         <h3><b>Goal: </b></h3>
         <p className='postText'> {' ' + this.props.postProps.goal}</p>
         <h3><b>Method:</b></h3>

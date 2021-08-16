@@ -5,6 +5,10 @@
  
 }
 body{
+  background-image: url(https://cdn.discordapp.com/attachments/876099998331322400/876584787689738291/AdobeStock_112464962.jpeg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
   background-color: #ebf7ff;
 }
 #login {
@@ -98,6 +102,11 @@ button:hover{
   border: 2px white solid;
   border-radius: 10px;
   padding: 10px;
+  word-wrap: break-word;
+}
+
+.postHeader {
+  word-wrap: break-word;
 }
 /* hexcodes:  
 
