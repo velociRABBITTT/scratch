@@ -10,9 +10,20 @@ import {
   Toolbar,
   Link,
   } from "@material-ui/core";
-  import { StylesProvider, ThemeProvider } from '@material-ui/core/styles';
+  import { StylesProvider, styled, ThemeProvider } from '@material-ui/core/styles';
   import FeedContainer from './../containers/FeedContainer.jsx'
   import NavBar from './NavBar.js'
+
+
+  const LoginButton = styled(Button)({
+    background: '#DE8B47'
+  })
+
+  const CreateUserButton = styled(Button)({
+    background: '#5E80DF'
+  })
+
+
 
 
 class App extends Component { 
@@ -157,12 +168,12 @@ class App extends Component {
                     </Grid>
                   </Grid>
                   <Grid item xs={12}>
-                    <Button color="primary" fullWidth variant="contained" onClick={this.loginUser}>
+                    <LoginButton fullWidth variant="contained" onClick={this.loginUser}>
                       Log in
-                    </Button>
-                    <Button color="default" className='createUser' fullWidth variant="contained" onClick={this.createUserClick}>
+                    </LoginButton>
+                    <CreateUserButton color="primary" className='createUser' fullWidth variant="contained" onClick={this.createUserClick}>
                       Create User
-                    </Button>
+                    </CreateUserButton>
                   </Grid>
                 </Grid>
               </form>
