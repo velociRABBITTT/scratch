@@ -56,7 +56,7 @@ class App extends Component {
     password: newPassword,
   }
   console.log(body)
-
+//create new user
   await fetch('/new', {
     method: 'POST',
     headers: {'Content-Type': 'Application/JSON'},
