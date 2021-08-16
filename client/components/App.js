@@ -110,7 +110,11 @@ class App extends Component {
         this.setState({ userLoggedIn: true, user: user})
       }
     })
-    .catch(err => console.log(err))
+    .catch(err => console.log(err));
+
+
+
+    
 
   }
 
@@ -148,7 +152,7 @@ class App extends Component {
           <div id ='login'>
             
             <Container maxWidth="xs" >
-              <img id="logo" src="https://cdn.discordapp.com/attachments/876099998331322402/876689102135763015/act3.png"></img>
+              <img id="logo" src="https://cdn.discordapp.com/attachments/876099998331322400/876861169980293140/comp_12.png"></img>
               <form>
                 <Grid container spacing={3}>
                   <Grid item xs={12}>
@@ -190,7 +194,7 @@ class App extends Component {
         <StylesProvider injectFirst>
           <div id ='createUserBox'>
             <Container maxWidth="xs">
-              <img id="logo" src="https://cdn.discordapp.com/attachments/876099998331322402/876689102135763015/act3.png"></img>
+              <img id="logo" src="https://cdn.discordapp.com/attachments/876099998331322400/876861169980293140/comp_12.png"></img>
               <form>
                 <Grid container spacing={3}>
                   <Grid item xs={12}>

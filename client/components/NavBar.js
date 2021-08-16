@@ -83,11 +83,11 @@ import {
             <div className="logoWelcome">
               <img id="logo" src="https://cdn.discordapp.com/attachments/876099998331322402/876689102135763015/act3.png"></img>
               {/* <a className="active" href="#">Actualize</a> */}
+          <Button color="primary" id='createPost' className='createPost' fullWidth variant="contained" size='small' onClick={this.createPostOnClick}>Create Post</Button>
               <center><h1 id='welcome'>Welcome {this.props.AppState.user.username}</h1></center>
               {/* <input id='createPost' type="text" placeholder="create post"></input> */}
             </div>
           
-          <Button color="primary" id='createPost' className='createPost' fullWidth variant="contained" size='small' onClick={this.createPostOnClick}>Create Post</Button>
           </div>
         </section>
       )

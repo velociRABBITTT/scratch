@@ -16,7 +16,7 @@ import {
 
   const AllPostsContainer = styled(Container)({
     //background: 'rgba(70, 70, 70, 0.7)',
-    marginTop: '80px',
+    marginTop: '120px',
     
 
   })

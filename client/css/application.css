@@ -6,12 +6,16 @@
 }
 body{
  /* background-image: url(https://wallpapercave.com/wp/wp7260997.jpg); */
-  background-image: url(https://cdn.discordapp.com/attachments/876099998331322400/876762759231045632/9k.png);
+  background-image: url(https://cdn.discordapp.com/attachments/876099998331322400/876859624836431892/comp_100000000.png);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   background-color: #ebf7ff;
+  
 }
+
+
+
 #login {
   position: center;
   margin-top:300px;
@@ -56,14 +60,15 @@ body{
 
 /* trial for nav bar */
 .topnav {
+  width: 100%;
   overflow: hidden;
-  background-color: #eeb05e ;
+  background-color: rgb(233, 124, 61) ;
   display: flex;
   flex-direction: column;
-  border-radius: 50px;
+  /* border-radius: 20px; */
   /* */
   margin-bottom: 25px;
-  box-shadow: 0 0 10px 10px rgb(79, 71, 184)
+  box-shadow: 0 0 5px 2px #6bb7ff
 }
 
 .topnav a {
@@ -84,7 +89,6 @@ body{
 }
 
 #logo {
-  background: rgb(84, 126, 216);
   border-radius: 5px;
   margin-top: 2px ;
   margin-bottom: 2px ;
@@ -113,13 +117,13 @@ button:hover{
 
 .MuiContainer-root {
   border: 4px  black solid;
-  background: rgb(238, 231, 189);
+  background: rgb(255, 255, 255);
   padding: 40px;
   border-radius: 10px;
   margin: auto;
   margin-bottom: 15px;
   border: 0;
-  box-shadow: 0 0 15px 10px #8ac2f7
+  box-shadow: 0 0 2px 2px #8ac2f7
   
 }
 
@@ -141,7 +145,7 @@ button:hover{
 
 
 #feed {
-  background:0;
+  background: 0;
   box-shadow: 0 0 0 0px;
 }
 
@@ -185,6 +189,9 @@ b{
 
 #createPost {
   background:rgb(99, 144, 241);
+  width:55%;
+  align-self: center;
+  margin-right: 75px
 }
 
 #createPost:hover {
