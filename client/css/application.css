@@ -5,7 +5,7 @@
  
 }
 body{
-  background-image: url(https://cdn.discordapp.com/attachments/876099998331322400/876584787689738291/AdobeStock_112464962.jpeg);
+  background-image: url(https://wallpapercave.com/wp/wp7260997.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -57,6 +57,8 @@ body{
 .topnav {
   overflow: hidden;
   background-color: #517185 ;
+  display: flex;
+  flex-direction: column;
   
   /* */
   margin-bottom: 25px;
@@ -93,6 +95,7 @@ button:hover{
 }
 
 .MuiContainer-root {
+  border: 4px  black solid;
   background: white;
   padding: 40px;
   border-radius: 10px;
