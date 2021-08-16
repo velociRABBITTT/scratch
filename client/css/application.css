@@ -56,7 +56,9 @@ body{
 /* trial for nav bar */
 .topnav {
   overflow: hidden;
-  background-color: #517185;
+  background-color: #517185 ;
+  
+  /* */
   margin-bottom: 25px;
 }
 
@@ -99,15 +101,38 @@ button:hover{
 }
 
 .postText{
-  border: 2px white solid;
+  border: 2px  black solid;
   border-radius: 10px;
   padding: 10px;
+  color: black;
   word-wrap: break-word;
+}
+
+
+
+
+h3{
+  color: black;
+}
+b{
+  color:black;
 }
 
 .postHeader {
   word-wrap: break-word;
+  color: black;
+  font-size: 30px;
+
 }
+
+.sticky {
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  z-index: 10;
+}
+
+
 /* hexcodes:  
 
 dom's grey #a2a2a3;

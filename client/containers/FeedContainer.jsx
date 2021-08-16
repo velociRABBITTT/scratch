@@ -10,16 +10,20 @@ import {
   Toolbar,
   Link,
   } from "@material-ui/core";
-  import { StylesProvider } from '@material-ui/core/styles';
+  import { StylesProvider, styled } from '@material-ui/core/styles';
   import Post from './../components/post.js';
 
+
+  const AllPostsContainer = styled(Container)({
+    background: 'rgba(70, 70, 70, 0.7)',
+
+  })
 
   class FeedContainer extends Component {
     constructor(props) {
       super(props);
       this.state = {}
     }
-
 
     render (){
 
@@ -41,9 +45,10 @@ import {
       // <div id='feedContainer'>
       //   <Post />
       // </div>
-      <Container maxWidth='md'> 
+      <AllPostsContainer  maxWidth='md'> 
         {feedArr}
-        </Container>
+        </AllPostsContainer >
+      // </div>
       )
     }
   }

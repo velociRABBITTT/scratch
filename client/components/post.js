@@ -15,8 +15,8 @@ import { grey } from "@material-ui/core/colors";
 
 
   const PostContainer = styled(Container)({
-    background: 'rgb(70, 70, 70)',
-    color: 'white'
+    background: 'rgb(245, 245, 245)',
+    color: 'black'
 
   })
 
@@ -37,8 +37,6 @@ import { grey } from "@material-ui/core/colors";
       super(props);
       this.state = {
         editForm: false,
-        targetId: undefined,
-        id: this.props.postProps._id
       }
       this.editPost = this.editPost.bind(this);
       this.changeToEdit = this.changeToEdit.bind(this);
@@ -46,8 +44,8 @@ import { grey } from "@material-ui/core/colors";
     }
 
     async editPost(e) {
-      
-      console.log(e.target.value)
+      await  this.props.update();
+      console.log('from edit', this.props.postProps._id)
       const newTitle = await document.getElementById('eTitle').value;
       const newGoal = await document.getElementById('eGoal').value;
       const newMethod = await document.getElementById('eMethod').value;
@@ -57,7 +55,7 @@ import { grey } from "@material-ui/core/colors";
       let newDate = new Date();
       newDate = newDate.toTimeString()
       const body = await {
-        id: this.state.id,
+        id: this.props.postProps._id,
         title: newTitle,
         goal: newGoal,
         method: newMethod,
@@ -67,7 +65,7 @@ import { grey } from "@material-ui/core/colors";
         created: newDate
       }
 
-      fetch('/posts', {
+      await fetch('/posts', {
         method: 'PUT',
         headers: {'Content-Type':'Application/JSON'},
         body: JSON.stringify(body)
@@ -75,7 +73,7 @@ import { grey } from "@material-ui/core/colors";
       .then(res => res.json())
       .then(arr => {
       //console.log(arr)
-      this.setState({editForm: false, targetId: undefined})
+      this.setState({editForm: false})
       this.props.update();
 
     })
@@ -86,9 +84,10 @@ import { grey } from "@material-ui/core/colors";
       this.setState({ editForm: true})
     }
 
-    deletePost(e) {
-      const targetId = {id: this.state.id};
-      fetch('/posts', {
+   async deletePost(e) {
+    
+      let targetId = await {id: this.props.postProps._id};
+     await fetch('/posts', {
         method: 'DELETE',
         headers: {'Content-Type':'Application/JSON'},
         body: JSON.stringify(targetId)
@@ -112,7 +111,7 @@ import { grey } from "@material-ui/core/colors";
                         <TextField id='eTitle' fullWidth label='Title' name='Title' size='medium' variant='outlined' defaultValue= {this.props.postProps.title} /> 
                       </Grid>
                       <Grid item xs={12}>
-                        <TextField id='eGoal' fullWidth label="Goal" name="Goal" size="medium" variant="outlined" defaultValue= {this.props.postProps.goal}/>
+                        <TextField id='eGoal' fullWidth label="Goal" name="Goal" size="medium" variant="outlined" multiline={true} defaultValue= {this.props.postProps.goal}/>
                       </Grid>
                       <Grid item xs={12}>
                         <TextField
@@ -123,6 +122,7 @@ import { grey } from "@material-ui/core/colors";
                           name="Method"
                           size="medium"
                           variant="outlined"
+                          multiline={true}
                         />
                       </Grid>
                       <Grid item xs={12}>
@@ -134,7 +134,7 @@ import { grey } from "@material-ui/core/colors";
                         name='Duration'
                         size='medium'
                         variant='outlined'
-                        
+                        multiline={true}
                         />
                       </Grid>
                       <Grid item xs={12}>
@@ -146,7 +146,8 @@ import { grey } from "@material-ui/core/colors";
                           name="Results"
                           size="medium"
                           variant="outlined"
-                          multiline='true'
+                          multiline={true}
+                          
                         />
                     </Grid>
                   </Grid>
@@ -174,7 +175,7 @@ import { grey } from "@material-ui/core/colors";
       //   <p>Date Posted: {' ' + this.props.postProps.created}</p>
       // </div>
       <PostContainer maxWidth='md' >
-         <h1 className='postHeader'><b>{this.props.postProps.title}</b></h1>
+         <h1 className='postHeader'>{this.props.postProps.title}</h1>
          <h3 ><b>Goal: </b></h3>
          <p className='postText'> {' ' + this.props.postProps.goal}</p>
          <h3><b>Method:</b></h3>
@@ -193,7 +194,7 @@ import { grey } from "@material-ui/core/colors";
       const authoredPost = (     
       
         <PostContainer maxWidth='md' >
-        <h1 className='postHeader'><b>{this.props.postProps.title}</b></h1>
+        <h1 className='postHeader'>{this.props.postProps.title}</h1>
         <h3><b>Goal: </b></h3>
         <p className='postText'> {' ' + this.props.postProps.goal}</p>
         <h3><b>Method:</b></h3>

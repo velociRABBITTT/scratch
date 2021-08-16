@@ -68,22 +68,24 @@ import {
 
 
     render(){
-//CONDITIONAL
+//CONDITIONAL 1: DEFAULT render the Navbar with ability to create post button
       if (!this.state.createPost){
       return(
+        <section className='sticky'>
         <div className="topnav">
         <a className="active" href="#">Actualize</a><span>Welcome: {this.props.AppState.user.username}</span>
         {/* <input id='createPost' type="text" placeholder="create post"></input> */}
         <Button color="default" className='createPost' fullWidth variant="contained" size='small' onClick={this.createPostOnClick}>Create Post</Button>
       </div>
+      </section>
       )
     }
-
+//CONDITIONAL 2: Once create Post is clicked, we render the edit post
     if (this.state.createPost){
       return (
-        <section>
+        <section className='sticky'>
           <div className="topnav">
-          <a className="active" href="#">Actualize</a>
+          <a className="active" href="/">Actualize</a>
           {/* <input id='createPost' type="text" placeholder="create post"></input> */}
           </div>
           <Container maxWidth='md'>
@@ -94,7 +96,7 @@ import {
                           <TextField id='pTitle' fullWidth label='Title' name='Title' size='small' variant='outlined' />
                         </Grid>
                         <Grid item xs={12}>
-                          <TextField id='pGoal' fullWidth label="Goal" name="Goal" size="small" variant="outlined" />
+                          <TextField id='pGoal' fullWidth label="Goal" name="Goal" size="small" variant="outlined" multiline={true}/>
                         </Grid>
                         <Grid item xs={12}>
                           <TextField
@@ -104,6 +106,7 @@ import {
                             name="Method"
                             size="small"
                             variant="outlined"
+                            multiline={true}
                           />
                         </Grid>
                         <Grid item xs={12}>
@@ -114,7 +117,7 @@ import {
                           name='Duration'
                           size='small'
                           variant='outlined'
-                          
+                          multiline={true}
                           />
                         </Grid>
                         <Grid item xs={12}>
@@ -125,10 +128,12 @@ import {
                             name="Results"
                             size="small"
                             variant="outlined"
+                            multiline={true}
                           />
                       </Grid>
                     </Grid>
                     <Grid item xs={12}>
+                      {/* SUBMIT BUTTON */}
                       <Button color="primary" className='submitPost' fullWidth variant="contained" onClick={this.submitNewPost}>
                         Submit New Post
                       </Button>
