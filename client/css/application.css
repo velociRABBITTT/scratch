@@ -189,9 +189,9 @@ b{
 
 #createPost {
   background:rgb(99, 144, 241);
-  width:55%;
+  width:41%;
   align-self: center;
-  margin-right: 75px
+  margin-right: 50px
 }
 
 #createPost:hover {
@@ -205,6 +205,14 @@ b{
 
 #submitPost:hover {
   background:rgb(43, 100, 224);
+}
+
+#cancelPost {
+  background: rgb(233, 124, 61);
+}
+
+#cancelPost:hover {
+  background: rgb(233, 124, 61);
 }
 /* hexcodes:  
 
