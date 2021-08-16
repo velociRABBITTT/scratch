@@ -15,8 +15,10 @@ import { grey } from "@material-ui/core/colors";
 
 
   const PostContainer = styled(Container)({
-    //background: 'rgb(245, 245, 245)',
-    //color: 'black'
+    background: 'rgb(245, 245, 245)',
+    color: 'black',
+    border: '3px gray solid',
+    boxShadow: '0 0 0px 0px #8ac2f7'
 
   })
 
@@ -195,7 +197,7 @@ import { grey } from "@material-ui/core/colors";
       
         <PostContainer maxWidth='md' >
         <h1 className='postHeader'>{this.props.postProps.title}</h1>
-        <h3><b>Goal: </b></h3>
+        <h3 className><b>Goal: </b></h3>
         <p className='postText'> {' ' + this.props.postProps.goal}</p>
         <h3><b>Method:</b></h3>
         <p className='postText'> {' ' + this.props.postProps.method}</p>
