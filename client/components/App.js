@@ -110,7 +110,11 @@ class App extends Component {
         this.setState({ userLoggedIn: true, user: user})
       }
     })
-    .catch(err => console.log(err))
+    .catch(err => console.log(err));
+
+
+
+    
 
   }
 
