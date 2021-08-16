@@ -15,8 +15,9 @@ import {
 
 
   const AllPostsContainer = styled(Container)({
-    background: 'rgba(70, 70, 70, 0.7)',
-    marginTop: '80px'
+    //background: 'rgba(70, 70, 70, 0.7)',
+    marginTop: '80px',
+    
 
   })
 
@@ -46,7 +47,7 @@ import {
       // <div id='feedContainer'>
       //   <Post />
       // </div>
-      <AllPostsContainer  maxWidth='md'> 
+      <AllPostsContainer id='feed' maxWidth='md'> 
         {feedArr}
         </AllPostsContainer >
       // </div>

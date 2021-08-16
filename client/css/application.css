@@ -5,7 +5,8 @@
  
 }
 body{
-  background-image: url(https://wallpapercave.com/wp/wp7260997.jpg);
+ /* background-image: url(https://wallpapercave.com/wp/wp7260997.jpg); */
+  background-image: url(https://cdn.discordapp.com/attachments/876099998331322400/876762759231045632/9k.png);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -56,12 +57,13 @@ body{
 /* trial for nav bar */
 .topnav {
   overflow: hidden;
-  background-color: #517185 ;
+  background-color: #eeb05e ;
   display: flex;
   flex-direction: column;
-  
+  border-radius: 50px;
   /* */
   margin-bottom: 25px;
+  box-shadow: 0 0 10px 10px rgb(79, 71, 184)
 }
 
 .topnav a {
@@ -71,6 +73,21 @@ body{
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+}
+
+.logoWelcome {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items:center;
+  width: 96%;
+}
+
+#logo {
+  background: rgb(84, 126, 216);
+  border-radius: 5px;
+  margin-top: 2px ;
+  margin-bottom: 2px ;
 }
 
 #createPost {
@@ -96,13 +113,22 @@ button:hover{
 
 .MuiContainer-root {
   border: 4px  black solid;
-  background: white;
+  background: rgb(238, 231, 189);
   padding: 40px;
   border-radius: 10px;
   margin: auto;
   margin-bottom: 15px;
-  border: 2px rgb(204, 108, 45) solid;
+  border: 0;
+  box-shadow: 0 0 15px 10px #8ac2f7
   
+}
+
+
+
+.MuiButtonBase-root {
+  background-color: #D2A853;
+  font-size: 15px;
+  font-weight: 700;
 }
 
 .postText{
@@ -114,7 +140,10 @@ button:hover{
 }
 
 
-
+#feed {
+  background:0;
+  box-shadow: 0 0 0 0px;
+}
 
 h3{
   color: black;
@@ -133,11 +162,43 @@ b{
 .sticky {
   position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
-  width: 100%; /* Full width */
+  width: 99%; /* Full width */
+  margin-top: 5px;
   z-index: 10;
 }
 
+#loginButton {
+  background: rgb(99, 144, 241);
+}
 
+#createUser {
+  background: rgb(233, 124, 61);
+}
+
+#createNewUser {
+  background: rgb(99, 144, 241);
+}
+
+#createNewUser:hover {
+  background: rgb(233, 124, 61);
+}
+
+#createPost {
+  background:rgb(99, 144, 241);
+}
+
+#createPost:hover {
+  background:rgb(43, 100, 224);
+}
+
+#submitPost {
+  background:rgb(99, 144, 241);
+  margin: 13px 0px 5px 0px;
+}
+
+#submitPost:hover {
+  background:rgb(43, 100, 224);
+}
 /* hexcodes:  
 
 dom's grey #a2a2a3;

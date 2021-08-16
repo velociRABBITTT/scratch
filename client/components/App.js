@@ -146,7 +146,9 @@ class App extends Component {
       return (
         <StylesProvider injectFirst>
           <div id ='login'>
+            
             <Container maxWidth="xs" >
+              <img id="logo" src="https://cdn.discordapp.com/attachments/876099998331322402/876689102135763015/act3.png"></img>
               <form>
                 <Grid container spacing={3}>
                   <Grid item xs={12}>
@@ -168,10 +170,10 @@ class App extends Component {
                     </Grid>
                   </Grid>
                   <Grid item xs={12}>
-                    <LoginButton fullWidth variant="contained" onClick={this.loginUser}>
+                    <LoginButton fullWidth id='loginButton' variant="contained" onClick={this.loginUser}>
                       Log in
                     </LoginButton>
-                    <CreateUserButton color="primary" className='createUser' fullWidth variant="contained" onClick={this.createUserClick}>
+                    <CreateUserButton color="primary" id='createUser' className='createUser' fullWidth variant="contained" onClick={this.createUserClick}>
                       Create User
                     </CreateUserButton>
                   </Grid>
@@ -188,6 +190,7 @@ class App extends Component {
         <StylesProvider injectFirst>
           <div id ='createUserBox'>
             <Container maxWidth="xs">
+              <img id="logo" src="https://cdn.discordapp.com/attachments/876099998331322402/876689102135763015/act3.png"></img>
               <form>
                 <Grid container spacing={3}>
                   <Grid item xs={12}>
@@ -224,7 +227,7 @@ class App extends Component {
                     </Grid>
                   </Grid>
                   <Grid item xs={12}>
-                    <Button color="primary" className='createUser' fullWidth variant="contained" onClick={this.actualCreate}>
+                    <Button color="primary" id='createNewUser' className='createUser' fullWidth variant="contained" onClick={this.actualCreate}>
                       Create New User
                     </Button>
                   </Grid>
