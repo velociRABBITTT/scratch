@@ -80,9 +80,11 @@ import {
       return(
         <section className='sticky'>
         <div className="topnav">
-        <a className="active" href="#">Actualize</a><span>Welcome: {this.props.AppState.user.username}</span>
+        <img src="https://cdn.discordapp.com/attachments/876099998331322402/876689102135763015/act3.png"></img>
+        {/* <a className="active" href="#">Actualize</a> */}
+        <center><h1 id='welcome'>Welcome {this.props.AppState.user.username}</h1></center>
         {/* <input id='createPost' type="text" placeholder="create post"></input> */}
-        <Button color="default" className='createPost' fullWidth variant="contained" size='small' onClick={this.createPostOnClick}>Create Post</Button>
+        <Button color="primary" className='createPost' fullWidth variant="contained" size='small' onClick={this.createPostOnClick}>Create Post</Button>
       </div>
       </section>
       )
@@ -92,7 +94,8 @@ import {
       return (
         <section className='sticky'>
           <div className="topnav">
-          <a className="active" href="/">Actualize</a>
+          {/* <a className="active" href="/">Actualize</a> */}
+          <center><h1 id='welcome'>Welcome {this.props.AppState.user.username}</h1></center>
           {/* <input id='createPost' type="text" placeholder="create post"></input> */}
           </div>
           <SubmitContainer maxWidth='md'>
