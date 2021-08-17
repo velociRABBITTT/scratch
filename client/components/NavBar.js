@@ -81,7 +81,7 @@ import {
         <section className='sticky'>
           <div className="topnav">
             <div className="logoWelcome">
-              <img id="logo" src="https://cdn.discordapp.com/attachments/876099998331322400/876906653956571136/actualize6.png"></img>
+              <img id="logo" src="https://cdn.discordapp.com/attachments/876099998331322400/876906653956571136/actualize6.png" onClick={this.props.update}></img>
               {/* <a className="active" href="#">Actualize</a> */}
           <Button color="primary" id='createPost' className='createPost' fullWidth variant="contained" size='small' onClick={this.createPostOnClick}>Create Post</Button>
               <center><h1 id='welcome'>Welcome {this.props.AppState.user.username}</h1></center>
@@ -98,7 +98,7 @@ import {
         <section className='sticky'>
           <div className="topnav">
           <div className="logoWelcome">
-              <img id="logo" src="https://cdn.discordapp.com/attachments/876099998331322400/876906653956571136/actualize6.png"></img>
+              <img id="logo" src="https://cdn.discordapp.com/attachments/876099998331322400/876906653956571136/actualize6.png" onClick={this.props.update}></img>
               {/* <a className="active" href="#">Actualize</a> */}
               <center><h1 id='welcome'>Welcome {this.props.AppState.user.username}</h1></center>
               {/* <input id='createPost' type="text" placeholder="create post"></input> */}
