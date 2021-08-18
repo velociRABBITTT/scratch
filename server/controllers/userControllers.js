@@ -28,6 +28,9 @@ userController.verifyUser = (req, res, next) => {
       );
     }
     if (result.password === req.body.password) {
+      req.session.userName = result.username; // setting userID of the session to be the user's id
+      req.session.userID = result._id;
+      // console.log(req.session, 'session AFTER set userName and userID');
       res.locals.result = result; //sending true back to frontend
       return next();
     }
