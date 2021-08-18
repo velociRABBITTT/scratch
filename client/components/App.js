@@ -26,7 +26,7 @@ import {
 
 
 
-class App extends Component { 
+class App extends Component {
   constructor() {
     super();
     this.state = {
@@ -48,7 +48,7 @@ class App extends Component {
     this.setState({createUser: true});
   }
 
-  // function to create user in database 
+  // function to create user in database
 
  async actualCreate(){
 
@@ -87,7 +87,7 @@ class App extends Component {
   }
 
 
-  //function to login user to site 
+  //function to login user to site
 
   }
 
@@ -114,21 +114,33 @@ class App extends Component {
 
 
 
-    
+
 
   }
 
 
-  // Get all posts on mount, makes the request once 
+  // Get all posts on mount, makes the request once
 
-  componentDidMount() {
+  async componentDidMount() {
 
-    fetch('/posts')
+    await fetch('/posts')
       .then(res => res.json())
       .then(arr => {
         console.log(arr)
         this.setState({ feed: arr })
       })
+
+    fetch('/sess')
+      .then(res => res.json())
+      .then(user => {
+        if (user.loggedIn === false){
+          console.log(user.loggedIn, ',,, user not logged in ,,,')
+          return;
+        }
+        console.log(user, 'user returned from fetch request')
+        this.setState ({ userLoggedIn: true, user: user})
+      })
+      .catch(err => console.log(err))
   }
 
   updatePosts() {
@@ -141,7 +153,6 @@ class App extends Component {
   }
 
 
-
   render () {
 
     //CONDITIONAL 1 DEFAULT: Checks if user IS NOT logged in & checks if create user has NOT been selected yet - Renders only the login screen
@@ -150,7 +161,7 @@ class App extends Component {
       return (
         <StylesProvider injectFirst>
           <div id ='login'>
-            
+
             <Container maxWidth="xs" >
               <img id="logo" src="https://cdn.discordapp.com/attachments/876099998331322400/876861169980293140/comp_12.png"></img>
               <form>
@@ -217,7 +228,7 @@ class App extends Component {
                         />
                       </Grid>
                       <Grid item xs={12}>
-                        <TextField 
+                        <TextField
                         fullWidth
                         id='cPassword2'
                         label='Confirm Password'
@@ -225,7 +236,7 @@ class App extends Component {
                         size='small'
                         type='password'
                         variant='outlined'
-                        
+
                         />
                       </Grid>
                     </Grid>

@@ -28,8 +28,11 @@ userController.verifyUser =  async (req, res, next) => {
         "It's either your password is wrong or your user name is wrong"
       );
     }
-   let results = await bcrypt.compare(req.body.password, result.password).then((result) => result);
-    if (results) {
+   let passwordsMatch = await bcrypt.compare(req.body.password, result.password).then((result) => result);
+    if (passwordsMatch) {
+      req.session.userID = result._id;
+      req.session.userName = result.username;
+      console.log(req.session, 'session after id and name set');
       res.locals.result = result; //sending true back to frontend
       return next();
     }
@@ -40,6 +43,8 @@ userController.verifyUser =  async (req, res, next) => {
   );
 
 };
+
+
 module.exports = userController;
 // .exec((err,user)=>{
 //   console.log(user)
