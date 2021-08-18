@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 import { Button, TextField, Grid, Container } from '@material-ui/core';
-  // Paper,
-  // AppBar,
-  // Typography,
-  // Toolbar,
-  // Link,
-  // } from "@material-ui/core";
-import { StylesProvider, /*styled, ThemeProvider*/ } from '@material-ui/core/styles';
+import { StylesProvider } from '@material-ui/core/styles';
 
 class CreateUser extends Component {
   constructor(props) {

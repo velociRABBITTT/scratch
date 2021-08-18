@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 import { Button, TextField, Grid, Container } from '@material-ui/core';
-  // Paper,
-  // AppBar,
-  // Typography,
-  // Toolbar,
-  // Link,
-  // } from "@material-ui/core";
-import { StylesProvider, styled, /*ThemeProvider*/ } from '@material-ui/core/styles';
+import { StylesProvider, styled } from '@material-ui/core/styles';
 
 const LoginButton = styled(Button)({
   background: '#DE8B47'
