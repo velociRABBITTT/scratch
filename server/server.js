@@ -3,6 +3,7 @@ const app = express();
 const path = require("path");
 const session = require('express-session');
 const userController = require("./controllers/userControllers");
+const sessionControllers = require("./controllers/sessionControllers");
 
 const postRoutes = require("./routes/postRoutes");
 //* handle parsing request body
@@ -18,7 +19,7 @@ app.use(session({
   saveUninitialized: true,
   cookie: {
     // secure: true, -> requires https connection
-    maxAge: 1000 * 60 * 60 * 24 * 3
+    maxAge: 1000 * 60 * 1
   }
 }))
 
@@ -29,6 +30,10 @@ app.use("/build", express.static(path.join(__dirname, "../build")));
 app.get("/", (req, res) => {
   return res.status(200).sendFile(path.join(__dirname, "../index.html"));
 });
+
+app.get('/sess', sessionControllers.authorize, (req, res) => {
+  return res.status(200).json(res.locals.user)
+})
 
 //POST request for create user
 app.post("/new", userController.createUser, (req, res) => {

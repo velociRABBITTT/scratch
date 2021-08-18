@@ -121,14 +121,26 @@ class App extends Component {
 
   // Get all posts on mount, makes the request once
 
-  componentDidMount() {
+  async componentDidMount() {
 
-    fetch('/posts')
+    await fetch('/posts')
       .then(res => res.json())
       .then(arr => {
         console.log(arr)
         this.setState({ feed: arr })
       })
+
+    fetch('/sess')
+      .then(res => res.json())
+      .then(user => {
+        if (user.loggedIn === false){
+          console.log(user.loggedIn, ',,, user not logged in ,,,')
+          return;
+        }
+        console.log(user, 'user returned from fetch request')
+        this.setState ({ userLoggedIn: true, user: user})
+      })
+      .catch(err => console.log(err))
   }
 
   updatePosts() {
