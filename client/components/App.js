@@ -1,26 +1,28 @@
 import React, { Component } from "react";
-import FeedContainer from './../containers/FeedContainer.jsx'
-import NavBar from './NavBar.js'
-import {
-  Button,
-  TextField,
-  Grid,
-  Container,
-  Paper,
-  AppBar,
-  Typography,
-  Toolbar,
-  Link,
-  } from "@material-ui/core";
-  import { StylesProvider, styled, ThemeProvider } from '@material-ui/core/styles';
+import Login from './Login.jsx';
+import NavBar from './NavBar.js';
+import FeedContainer from './../containers/FeedContainer.jsx';
+import CreateUser from './CreateUser.jsx';
+// import {
+//   Button,
+//   TextField,
+//   Grid,
+//   Container,
+//   // Paper,
+//   // AppBar,
+//   // Typography,
+//   // Toolbar,
+//   // Link,
+//   } from "@material-ui/core";
+// import { StylesProvider, styled, /*ThemeProvider*/ } from '@material-ui/core/styles';
 
-  const LoginButton = styled(Button)({
-    background: '#DE8B47'
-  })
+  // const LoginButton = styled(Button)({
+  //   background: '#DE8B47'
+  // })
 
-  const CreateUserButton = styled(Button)({
-    background: '#5E80DF'
-  })
+  // const CreateUserButton = styled(Button)({
+  //   background: '#5E80DF'
+  // })
 
 class App extends Component {
   constructor() {
@@ -126,98 +128,99 @@ class App extends Component {
     //CONDITIONAL 1 DEFAULT: Checks if user IS NOT logged in & checks if create user has NOT been selected yet - Renders only the login screen
     if (!this.state.userLoggedIn && !this.state.createUser) {
       return (
-        <StylesProvider injectFirst>
-          <div id ='login'>
-
-            <Container maxWidth="xs" >
-              <img id="logo" src="https://cdn.discordapp.com/attachments/876099998331322400/876861169980293140/comp_12.png"></img>
-              <form>
-                <Grid container spacing={3}>
-                  <Grid item xs={12}>
-                    <Grid container spacing={2}>
-                      <Grid item xs={12}>
-                        <TextField id='lUser' fullWidth label="Username" name="username" size="small" variant="outlined" />
-                      </Grid>
-                      <Grid item xs={12}>
-                        <TextField
-                          id='lPass'
-                          fullWidth
-                          label="Password"
-                          name="password"
-                          size="small"
-                          type="password"
-                          variant="outlined"
-                        />
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <LoginButton fullWidth id='loginButton' variant="contained" onClick={this.loginUser}>
-                      Log in
-                    </LoginButton>
-                    <CreateUserButton color="primary" id='createUser' className='createUser' fullWidth variant="contained" onClick={this.createUserClick}>
-                      Create User
-                    </CreateUserButton>
-                  </Grid>
-                </Grid>
-              </form>
-          </Container>
-        </div>
-      </StylesProvider>
-      )
+        <Login handleLogin={this.loginUser} handleCreate={this.createUserClick} />
+      //   <StylesProvider injectFirst>
+      //     <div id ='login'>
+      //       <Container maxWidth="xs" >
+      //         <img id="logo" src="https://cdn.discordapp.com/attachments/876099998331322400/876861169980293140/comp_12.png"></img>
+      //         <form>
+      //           <Grid container spacing={3}>
+      //             <Grid item xs={12}>
+      //               <Grid container spacing={2}>
+      //                 <Grid item xs={12}>
+      //                   <TextField id='lUser' fullWidth label="Username" name="username" size="small" variant="outlined" />
+      //                 </Grid>
+      //                 <Grid item xs={12}>
+      //                   <TextField
+      //                     id='lPass'
+      //                     fullWidth
+      //                     label="Password"
+      //                     name="password"
+      //                     size="small"
+      //                     type="password"
+      //                     variant="outlined"
+      //                   />
+      //                 </Grid>
+      //               </Grid>
+      //             </Grid>
+      //             <Grid item xs={12}>
+      //               <LoginButton fullWidth id='loginButton' variant="contained" onClick={this.loginUser}>
+      //                 Log in
+      //               </LoginButton>
+      //               <CreateUserButton color="primary" id='createUser' className='createUser' fullWidth variant="contained" onClick={this.createUserClick}>
+      //                 Create User
+      //               </CreateUserButton>
+      //             </Grid>
+      //           </Grid>
+      //         </form>
+      //     </Container>
+      //   </div>
+      // </StylesProvider>
+      );
     }//END CONDITIONAL 1: Default, Login screen
     //CONDITIONAL 2: Create User...Check if this.state create user is true - if so we render user login screen
-    if(this.state.createUser){
+    if (this.state.createUser) {
       return (
-        <StylesProvider injectFirst>
-          <div id ='createUserBox'>
-            <Container maxWidth="xs">
-              <img id="logo" src="https://cdn.discordapp.com/attachments/876099998331322400/876861169980293140/comp_12.png"></img>
-              <form>
-                <Grid container spacing={3}>
-                  <Grid item xs={12}>
-                    <Grid container spacing={2}>
-                      <Grid item xs={12}>
-                        <TextField id='cUser' fullWidth label='Username' name='Username' size='small' variant='outlined' />
-                      </Grid>
-                      <Grid item xs={12}>
-                        <TextField id='cEmail' fullWidth label="Email" name="email" size="small" variant="outlined" />
-                      </Grid>
-                      <Grid item xs={12}>
-                        <TextField
-                          id='cPassword'
-                          fullWidth
-                          label="Password"
-                          name="password"
-                          size="small"
-                          type="password"
-                          variant="outlined"
-                        />
-                      </Grid>
-                      <Grid item xs={12}>
-                        <TextField
-                        fullWidth
-                        id='cPassword2'
-                        label='Confirm Password'
-                        name='Confirm Password'
-                        size='small'
-                        type='password'
-                        variant='outlined'
-                        />
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Button color="primary" id='createNewUser' className='createUser' fullWidth variant="contained" onClick={this.actualCreate}>
-                      Create New User
-                    </Button>
-                  </Grid>
-                </Grid>
-              </form>
-          </Container>
-        </div>
-      </StylesProvider>
-      )
+        <CreateUser handleCreate={this.actualCreate} />
+      //   <StylesProvider injectFirst>
+      //     <div id ='createUserBox'>
+      //       <Container maxWidth="xs">
+      //         <img id="logo" src="https://cdn.discordapp.com/attachments/876099998331322400/876861169980293140/comp_12.png"></img>
+      //         <form>
+      //           <Grid container spacing={3}>
+      //             <Grid item xs={12}>
+      //               <Grid container spacing={2}>
+      //                 <Grid item xs={12}>
+      //                   <TextField id='cUser' fullWidth label='Username' name='Username' size='small' variant='outlined' />
+      //                 </Grid>
+      //                 <Grid item xs={12}>
+      //                   <TextField id='cEmail' fullWidth label="Email" name="email" size="small" variant="outlined" />
+      //                 </Grid>
+      //                 <Grid item xs={12}>
+      //                   <TextField
+      //                     id='cPassword'
+      //                     fullWidth
+      //                     label="Password"
+      //                     name="password"
+      //                     size="small"
+      //                     type="password"
+      //                     variant="outlined"
+      //                   />
+      //                 </Grid>
+      //                 <Grid item xs={12}>
+      //                   <TextField
+      //                   fullWidth
+      //                   id='cPassword2'
+      //                   label='Confirm Password'
+      //                   name='Confirm Password'
+      //                   size='small'
+      //                   type='password'
+      //                   variant='outlined'
+      //                   />
+      //                 </Grid>
+      //               </Grid>
+      //             </Grid>
+      //             <Grid item xs={12}>
+      //               <Button color="primary" id='createNewUser' className='createUser' fullWidth variant="contained" onClick={this.actualCreate}>
+      //                 Create New User
+      //               </Button>
+      //             </Grid>
+      //           </Grid>
+      //         </form>
+      //     </Container>
+      //   </div>
+      // </StylesProvider>
+      );
     }//END OF CONDITIONAL 2: Create User
     //CONDITION 3:If user is logged in - we will render the feedContainer
     if (this.state.userLoggedIn){
