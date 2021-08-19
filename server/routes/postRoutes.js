@@ -5,7 +5,7 @@ const router = express.Router();
 
 //GET request for user feed
 router.get("/", postController.getAllPosts, (req, res) => {
-  res.json(res.locals.allPosts);
+    res.json(res.locals.allPosts);
 });
 
 //POST request for creating new Post

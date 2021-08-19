@@ -46,7 +46,7 @@ class App extends Component {
         if (!user.status) {
           this.setState({ userLoggedIn: true, user: user, createUser: false });
         } else {
-          alert(`there was an error creating a user ${user.message}`)
+          alert(`there was an error creating a user ${user.message}`);
         }
       })
       .catch(err => console.log(err));
@@ -73,15 +73,27 @@ class App extends Component {
   }
 
   // Get all posts on mount, makes the request once
-  componentDidMount() {
-    return this.updatePosts();
+  async componentDidMount() {
+    await this.updatePosts();
+
+    fetch('/sess')
+      .then(res => res.json())
+      .then(user => {
+        if (user.loggedIn === false){
+          console.log(user.loggedIn, ',,, user not logged in ,,,');
+          return;
+        }
+        console.log(user, 'user returned from fetch request');
+        this.setState ({ userLoggedIn: true, user: user });
+      })
+      .catch(err => console.log(err));
   }
 
   updatePosts() {
     fetch('/posts')
     .then(res => res.json())
     .then(arr => {
-      this.setState({ feed: arr })
+      this.setState({ feed: arr });
     })
     .catch(err => console.log(err));
   }
