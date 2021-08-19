@@ -15,8 +15,6 @@ import {
 
   const SubmitContainer = styled(Container)({
    
-    
-
   })
 
   class NavBar extends Component {
@@ -35,9 +33,11 @@ import {
     createPostOnClick(e) {
       this.setState({ createPost: true })
     }
+
     cancelCreateOnClick(e) {
       this.setState({ createPost: false });
     }
+
     async submitNewPost() {
       const newTitle = await document.getElementById('pTitle').value;
       const newGoal = await document.getElementById('pGoal').value;
@@ -74,6 +74,7 @@ import {
 
 
 
+
     render(){
 //CONDITIONAL 1: DEFAULT render the Navbar with ability to create post button
       if (!this.state.createPost){
@@ -83,11 +84,12 @@ import {
             <div className="logoWelcome">
               <img id="logo" src="https://cdn.discordapp.com/attachments/876099998331322400/876906653956571136/actualize6.png" onClick={this.props.update}></img>
               {/* <a className="active" href="#">Actualize</a> */}
-          <Button color="primary" id='createPost' className='createPost' fullWidth variant="contained" size='small' onClick={this.createPostOnClick}>Create Post</Button>
-              <center><h1 id='welcome'>Welcome {this.props.AppState.user.username}</h1></center>
-              {/* <input id='createPost' type="text" placeholder="create post"></input> */}
+                <Button color="primary" id='createPost' className='createPost' fullWidth variant="contained" size='small' onClick={this.createPostOnClick}>Create Post</Button>
+              <div className="userInfo">
+                <center><h1 id='welcome'>Welcome {this.props.AppState.user.username}</h1></center>
+                <Button color="primary" id='logout' className='logout' fullWidth variant="contained" size='small' onClick={this.props.logout} >Logout</Button>
+              </div>
             </div>
-          
           </div>
         </section>
       )

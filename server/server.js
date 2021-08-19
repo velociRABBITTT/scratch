@@ -18,7 +18,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   cookie: {
-    // secure: true, -> requires https connection
+    // secure: true, ->requires https connection
     maxAge: 1000 * 60 * 1
   }
 }))
@@ -31,8 +31,19 @@ app.get("/", (req, res) => {
   return res.status(200).sendFile(path.join(__dirname, "../index.html"));
 });
 
+// Handle session request from front-end to authenticate user.
 app.get('/sess', sessionControllers.authorize, (req, res) => {
   return res.status(200).json(res.locals.user)
+})
+
+// Handle a request from frontend to logout 
+app.get('/logout', (req, res) => {
+  // destroy session
+  console.log(req.session, 'req session BEFORE destroy')
+  req.session.destroy();
+  console.log(req.session, 'req session AFTER destroy')
+  // return res.redirect('/');
+  return res.status(200).send('200');
 })
 
 //POST request for create user
@@ -43,6 +54,7 @@ app.post("/new", userController.createUser, (req, res) => {
 
 //POST request for Login
 app.post("/login", userController.verifyUser, (req, res) => {
+  console.log(req.session, 'on login')
   res.json(res.locals.result); //temp message to front end
 });
 

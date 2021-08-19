@@ -18,6 +18,7 @@ class App extends Component {
     this.actualCreate = this.actualCreate.bind(this);
     this.loginUser = this.loginUser.bind(this);
     this.updatePosts = this.updatePosts.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   // On click function for when user clicks on "create user". Changes state to rerender create user box.
@@ -98,6 +99,12 @@ class App extends Component {
     .catch(err => console.log(err));
   }
 
+  async logout(){
+    await fetch('/logout');
+    this.setState({ userLoggedIn: false, user: undefined, feed: undefined });
+    this.updatePosts();
+  }
+
   render () {
     //CONDITIONAL 1 DEFAULT: Checks if user IS NOT logged in & checks if create user has NOT been selected yet - Renders only the login screen
     if (!this.state.userLoggedIn && !this.state.createUser) {
@@ -113,8 +120,8 @@ class App extends Component {
     } else if (this.state.userLoggedIn) {
       return (
         <div>
-          <NavBar AppState={{...this.state}} update={this.updatePosts}/>
-          <FeedContainer AppState={{...this.state}} update={this.updatePosts}/>
+          <NavBar AppState={{...this.state}} update={this.updatePosts} logout={this.logout}/>
+          <FeedContainer AppState={{...this.state}} update={this.updatePosts} />
         </div>
       );
     }

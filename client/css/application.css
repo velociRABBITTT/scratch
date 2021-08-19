@@ -63,6 +63,7 @@ body{
 .topnav {
   width: 100%;
   overflow: hidden;
+  opacity: .75;
   background-color: rgb(233, 124, 61) ;
   display: flex;
   flex-direction: column;
@@ -228,6 +229,10 @@ b{
 
 #cancelPost:hover {
   background: rgb(233, 124, 61);
+}
+
+#welcome {
+  margin: 5px;
 }
 /* hexcodes:  
 
