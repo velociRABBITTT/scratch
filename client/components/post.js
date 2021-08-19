@@ -178,6 +178,7 @@ import { grey } from "@material-ui/core/colors";
       // </div>
       <PostContainer maxWidth='md' >
          <h1 className='postHeader'>{this.props.postProps.title}</h1>
+         <h3>Posted by {' ' + this.props.postProps.author}</h3>
          <h3 ><b>Goal: </b></h3>
          <p className='postText'> {' ' + this.props.postProps.goal}</p>
          <h3><b>Method:</b></h3>
@@ -186,7 +187,6 @@ import { grey } from "@material-ui/core/colors";
          <p className='postText'> {' ' + this.props.postProps.duration}</p>
          <h3><b>Results: </b></h3>
          <p className='postText'> {' ' + this.props.postProps.results}</p>
-         <h3>Author: {' ' + this.props.postProps.author}</h3>
          {/* <p></p> */}
          <h3>Date Posted:{' ' + this.props.postProps.created}</h3>
         {/* <p> </p> */}
@@ -197,6 +197,7 @@ import { grey } from "@material-ui/core/colors";
       
         <PostContainer maxWidth='md' >
         <h1 className='postHeader'>{this.props.postProps.title}</h1>
+        <h3>Posted by {' ' + this.props.postProps.author}</h3>
         <h3><b>Goal: </b></h3>
         <p className='postText'> {' ' + this.props.postProps.goal}</p>
         <h3><b>Method:</b></h3>
@@ -205,7 +206,6 @@ import { grey } from "@material-ui/core/colors";
         <p className='postText'> {' ' + this.props.postProps.duration}</p>
         <h3><b>Results: </b></h3>
         <p className='postText'> {' ' + this.props.postProps.results}</p>
-        <h3>Author: {' ' + this.props.postProps.author}</h3>
         {/* <p></p> */}
         <h3>Date Posted:{' ' + this.props.postProps.created}</h3>
        {/* <p> </p> */}
